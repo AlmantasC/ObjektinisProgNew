@@ -7,8 +7,10 @@
 #include <stdexcept>
 #include <iomanip>
 #include <chrono>
+#include <sstream>
 
 namespace chr = std::chrono;
+
 std::string randomstr(){
     int l = rand()%10+1;
     std::string name="", table="abcdefghijklmnopqrstuvwxyz";
@@ -19,33 +21,17 @@ std::string randomstr(){
     return name;
 }
 
-double vid (studentas A) {
-    int n=A.paz.size();
-    double suma=0;
-    for (int i=0; i<n; i++) suma+=A.paz[i];
-    suma/=n;
+bool pagalVard(const studentas& a, const studentas& b){
+    return a.getVardas() < b.getVardas();
+}
 
-    return suma;
-};
+bool pagalPavard(const studentas& a, const studentas& b){
+    return a.getPavarde() < b.getPavarde();
+}
 
-double med (studentas A){
-    int n=A.paz.size();
-    sort(A.paz.begin(), A.paz.end());
-    if (n%2==0) return (A.paz[n/2-1]+A.paz[n/2])/2.0;
-    else return A.paz[n/2];
-};
-
-bool pagalVard(studentas a, studentas b){
-    return a.vardas<b.vardas;
-};
-
-bool pagalPavard(studentas a, studentas b){
-    return a.pavarde<b.pavarde;
-};
-
-bool pagalGal(studentas a, studentas b){
-    return a.gal<b.gal;
-};
+bool pagalGal(const studentas& a, const studentas& b){
+    return a.getGal() < b.getGal();
+}
 
 int getInt(int min, int max) {
     int value;
@@ -69,7 +55,7 @@ int getInt(int min, int max) {
             std::cout<<e.what()<<", pabandykite dar kartą: ";
         }
     }
-};
+}
 
 std::string getFile() {
     std::string failas;
@@ -88,35 +74,38 @@ std::string getFile() {
             std::cin >> failas;
         }
     }
-};
+}
 
 void printRez(std::ostream& out, std::list<studentas>& A, int skaiciavimas) {
     out<<std::fixed<<std::setprecision(2)<<std::left<<std::setw(15)<<"Vardas"<<std::setw(15)<<" Pavardė"<<"\tGalutinis ";
     out<<(skaiciavimas == 1 ? "(Vid.)" : "(Med.)");
     out<<"\n------------------------------------------------\n";
     for (const auto& s : A) {
-        out<<std::left<<std::setw(15)<<s.vardas<<'\t'<<std::setw(15)<<s.pavarde<<'\t'<<s.gal<<'\n';
+        out<<std::left<<std::setw(15)<<s.getVardas()<<'\t'<<std::setw(15)<<s.getPavarde()<<'\t'<<s.getGal()<<'\n';
     }
-};
+}
 
 void ivestiRanka(std::list<studentas>& A, int& m) {
     studentas temp;
     int x;
+    std::string v, p;
     std::cout<<"Įrašykite studento vardą (arba -1 baigti): ";
-    while (std::cin>>temp.vardas && temp.vardas!="-1") {
+    while (std::cin>>v && v!="-1") {
+        temp.setVardas(v);
         std::cout<<"Įrašykite studento pavardę: ";
-        std::cin>>temp.pavarde;
+        std::cin>>p;
+        temp.setPavarde(p);
         m++;
-        temp.paz.clear();
-        std::cout<<"Įrašykite studento nd pazymį (arba -1 baigti): ";
+        temp.clearPaz();
+        std::cout<<"Įrašykite studento nd pažymį (arba -1 baigti): ";
         while (true) {
             x=getInt(-1, 10);
             if(x==-1) break;
-            temp.paz.push_back(x);
+            temp.addPaz(x);
             std::cout<<"Irasykite studento nd pazymi (arba -1 baigti): ";
         }
         std::cout<<"Įrašykite studento egzamino pažymį: ";
-        temp.egz=getInt(0, 10);
+        temp.setEgz(getInt(0, 10));
         A.push_back(temp);
         std::cout<<"Įrašykite studento vardą (arba -1 baigti): ";
     }
@@ -125,19 +114,22 @@ void ivestiRanka(std::list<studentas>& A, int& m) {
 void generuotiPazymius(std::list<studentas>& A, int& m) {
     studentas temp;
     int n, x;
+    std::string v, p;
     std::cout<<"Po kiek nd pažymių generuoti: ";
     std::cin>>n;
     std::cout<<"Įrašykite studento vardą (arba -1 baigti): ";
-    while (std::cin>>temp.vardas && temp.vardas!="-1") {
+    while (std::cin>>v && v!="-1") {
+        temp.setVardas(v);
         std::cout<<"Įrašykite studento pavardę: ";
-        std::cin>>temp.pavarde;
+        std::cin>>p;
+        temp.setPavarde(p);
         m++;
-        temp.paz.clear();
+        temp.clearPaz();
         for (int i=0; i<n; i++){
             x=rand()%10+1;
-            temp.paz.push_back(x);
+            temp.addPaz(x);
         }
-        temp.egz=rand()%10+1;
+        temp.setEgz(rand()%10+1);
         A.push_back(temp);
         std::cout<<"Įrašykite studento vardą (arba -1 baigti): ";
     }
@@ -151,14 +143,14 @@ void generuotiViska(std::list<studentas>& A, int& m) {
     std::cout<<"Po kiek nd pažymių generuoti: ";
     std::cin>>n;
     for (int i=0; i<m; i++) {
-        temp.vardas=randomstr();
-        temp.pavarde=randomstr();
-        temp.paz.clear();
+        temp.setVardas(randomstr());
+        temp.setPavarde(randomstr());
+        temp.clearPaz();
         for (int j=0; j<n; j++){
             x=rand()%10+1;
-            temp.paz.push_back(x);
+            temp.addPaz(x);
         }
-        temp.egz=rand()%10+1;
+        temp.setEgz(rand()%10+1);
         A.push_back(temp);
     }
 }
@@ -168,17 +160,20 @@ void skaitytiIsFailo(std::list<studentas>& A, int& m, std::string& failas) {
     int x;
     std::string line;
     std::ifstream fin(failas);
-    std::getline(fin, line);
+    std::getline(fin, line); // antraštė
     while (std::getline(fin, line)) {
         m++;
-        temp.paz.clear();
+        temp.clearPaz();
         std::istringstream iss(line);
-        iss>>temp.vardas>>temp.pavarde;
-        while (iss>>x) {
-            temp.paz.push_back(x);
-        }
-        temp.egz=temp.paz.back();
-        temp.paz.pop_back();
+        std::string v, p;
+        iss>>v>>p;
+        temp.setVardas(v);
+        temp.setPavarde(p);
+        std::vector<int> visiSk;
+        while (iss>>x) visiSk.push_back(x);
+        temp.setEgz(visiSk.back());
+        visiSk.pop_back();
+        temp.setPaz(visiSk);
         A.push_back(temp);
     }
     fin.close();
@@ -199,7 +194,7 @@ void generuotiFaila(){
     fout<<"Egz.";
     for (int i=1; i<=n; i++) {
         fout<<'\n'<<std::setw(20)<<("Vardas"+std::to_string(i))<<std::setw(20)<<("Pavarde"+std::to_string(i));
-        for (int i=0; i<16; i++) {
+        for (int j=0; j<16; j++) {
             fout<<std::setw(20)<<rand()%10+1;
         }
     }
@@ -211,7 +206,7 @@ void generuotiFaila(){
 
 void skirstymas(std::list<studentas>& studentai, std::list<studentas>& nevykeliai) {
     auto it = std::partition(studentai.begin(), studentai.end(),
-        [](const studentas& s){ return s.gal >= 5; });
+        [](const studentas& s){ return s.getGal() >= 5; });
     nevykeliai.assign(std::make_move_iterator(it), std::make_move_iterator(studentai.end()));
     studentai.erase(it, studentai.end());
 }

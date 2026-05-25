@@ -15,6 +15,7 @@ using std::string;
 using std::cout;
 using std::setw;
 using std::list;
+using std::sort;
 namespace chr = std::chrono;
 
 int main(){
@@ -22,10 +23,11 @@ int main(){
     SetConsoleCP(65001);
     std::srand(std::time(0));
     list<studentas> A;
-    studentas temp;
     int m=0;
     auto ms = [](auto d){
-    return chr::duration<double, std::milli>(d).count();};
+        return chr::duration<double, std::milli>(d).count();
+    };
+
     // --------- PASIRINKIMAI ---------
 
     cout<<"[1] - Įvedimas ranka\n[2] - Generuoti tik pažymius\n[3] - Generuoti viską\n[4] - Skaitymas iš failo\n[5] - Failu generavimas\n[6] - Baigti darbą\nJūsų pasirinkimas: ";
@@ -58,12 +60,13 @@ int main(){
         case 4: skaitytiIsFailo(A, m, failas); break;
     }
     auto tNuskaitymasEnd = chr::high_resolution_clock::now();
-    cout<<"\nNuskaitymas:       "<< ms(tNuskaitymasEnd-tStart)    <<" ms";
+    cout<<"\nNuskaitymas:       "<< ms(tNuskaitymasEnd-tStart) <<" ms";
+
     // --------- SKAICIAVIMAI ---------
 
     switch (skaiciavimas){
-        case 1: for (auto& s : A) s.gal = 0.4*vid(s) + 0.6*s.egz; break;
-        case 2: for (auto& s : A) s.gal = 0.4*med(s) + 0.6*s.egz; break;
+        case 1: for (auto& s : A) s.setGal(0.4*s.vid() + 0.6*s.getEgz()); break;
+        case 2: for (auto& s : A) s.setGal(0.4*s.med() + 0.6*s.getEgz()); break;
     }
 
     // --------- SKIRSTYMAS ---------
@@ -73,17 +76,18 @@ int main(){
         skirstymas(A, nevykeliai);
         auto tSkirstymasEnd = chr::high_resolution_clock::now();
         cout<<"\nSkirstymas:        "<< ms(tSkirstymasEnd-tSkirstymasStart) <<" ms";
-        }
+    }
 
     // --------- RUSIAVIMAS ---------
     auto tRusiavimasStart = chr::high_resolution_clock::now();
     switch (rusiavimas) {
         case 1: A.sort(pagalVard); if (isvedimas==3) nevykeliai.sort(pagalVard); break;
         case 2: A.sort(pagalPavard); if (isvedimas==3) nevykeliai.sort(pagalPavard); break;
-        case 3: A.sort(pagalGal); if (isvedimas==3) nevykeliai.sort(pagalGal); break;
+        case 3: A.sort(pagalGal); if (isvedimas==3) A.sort(pagalGal); break;
     }
     auto tRusiavimasEnd = chr::high_resolution_clock::now();
     cout<<"\nRūšiavimas:        "<< ms(tRusiavimasEnd-tRusiavimasStart) <<" ms";
+
     // --------- ISVEDIMAS ---------
 
     switch (isvedimas) {
@@ -104,8 +108,9 @@ int main(){
             std::ofstream foute("nerds.txt");
             printRez(foute, A, skaiciavimas);
             foute.close();
-            }
+            break;
         }
+    }
 
     auto tEnd = chr::high_resolution_clock::now();
     cout<<"\nIš viso užtruko:   "<< ms(tEnd-tStart) <<" ms\n";
