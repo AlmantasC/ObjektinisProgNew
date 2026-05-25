@@ -45,7 +45,7 @@ Vietoje `vector` galima nurodyti `list` arba `deque`.
 
 ## Klasės ir Struct Kompiliavimo flag'ų testas
 
-# 100 000 studentų
+### 100 000 studentų
 | Optimizavimas   | Versija  | Vykdymo laikas (ms) | Failo dydis (ms) |
 |----------------:|---------:|--------------------:|-----------------:|
 | O1     	  | struct   | 873.15              | 1035             |
@@ -55,7 +55,7 @@ Vietoje `vector` galima nurodyti `list` arba `deque`.
 | O3     	  | struct   | 854.61              | 1055             |
 |                 | class    | 641.19              | 1043             |
 
-# 1 000 000 studentų
+### 1 000 000 studentų
 | Optimizavimas   | Versija  | Vykdymo laikas (ms) | Failo dydis (ms) |
 |----------------:|---------:|--------------------:|-----------------:|
 | O1     	  | struct   | 9623.41             | 1035             |
