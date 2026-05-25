@@ -43,6 +43,30 @@ Vietoje `vector` galima nurodyti `list` arba `deque`.
 
 ---
 
+## Klasės ir Struct Kompiliavimo flag'ų testas
+
+# 100 000 studentų
+| Optimizavimas   | Versija  | Vykdymo laikas (ms) | Failo dydis (ms) |
+|----------------:|---------:|--------------------:|-----------------:|
+| O1     	  | struct   | 873.15              | 1035             |
+|                 | class    | 657.62              | 1029             |
+| O2     	  | struct   | 864.67              | 1036             |
+|                 | class    | 653.08              | 1026             |
+| O3     	  | struct   | 854.61              | 1055             |
+|                 | class    | 641.19              | 1043             |
+
+# 1 000 000 studentų
+| Optimizavimas   | Versija  | Vykdymo laikas (ms) | Failo dydis (ms) |
+|----------------:|---------:|--------------------:|-----------------:|
+| O1     	  | struct   | 9623.41             | 1035             |
+|                 | class    | 6617.74             | 1029             |
+| O2     	  | struct   | 9543.10             | 1036             |
+|                 | class    | 6474.63             | 1026             |
+| O3     	  | struct   | 9424.76             | 1055             |
+|                 | class    | 6518.39             | 1043             |
+
+---
+
 ## Spartos tyrimas
 
 Tyrimui naudojami prieš tai sugeneruoti failai. Bandyti visi rūšiavimo ir galutinio skaičiavimo būdai, rezultatai išreikšti vidurkiu.
