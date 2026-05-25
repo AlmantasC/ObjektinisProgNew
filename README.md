@@ -27,6 +27,108 @@ Išvedimo būdas        - į failą, į ekraną arba skirstymas į „nevykelių
 
 ---
 
+## Duomenų įvestis ir išvestis
+
+### Įvestis rankiniu būdu (1 parinktis)
+
+Vartotojas įveda kiekvieno studento duomenis ranka. Programa prašo vardo, pavardės, namų darbų pažymių (baigiama įvedant `-1`) ir egzamino pažymio. Naudojama `getInt()` funkcija su validacija — neteisingi įvedimai atmetami.
+
+```
+Įrašykite studento vardą (arba -1 baigti): Jonas
+Įrašykite studento pavardę: Jonaitis
+Įrašykite studento nd pažymį (arba -1 baigti): 8
+Įrašykite studento nd pažymį (arba -1 baigti): 9
+Įrašykite studento nd pažymį (arba -1 baigti): -1
+Įrašykite studento egzamino pažymį: 10
+```
+
+### Įvestis automatiniu būdu (2 ir 3 parinktis)
+
+**2 parinktis** — vartotojas įveda vardą ir pavardę, pažymiai generuojami atsitiktinai.  
+**3 parinktis** — viskas generuojama automatiškai: vardai, pavardės, pažymiai.
+
+### Įvestis iš failo (4 parinktis)
+
+Programa nuskaito studentų duomenis iš tekstinio failo. Failo formatas:
+
+```
+Vardas              Pavarde             ND1                 ND2                 ... Egz.
+Vardas1             Pavarde1            7                   8                   ... 9
+```
+
+Kiekviena eilutė nuskaitoma per `operator>>`, kuris automatiškai išskiria vardą, pavardę, namų darbų pažymius ir egzaminą.
+
+### Išvestis į ekraną (2 išvedimo būdas)
+
+Rezultatai spausdinami į terminalą per `operator<<`:
+
+```
+Vardas         	 Pavardė       	Galutinis (Vid.)
+------------------------------------------------
+Jonas          	 Jonaitis      	8.80
+```
+
+### Išvestis į failą (1 ir 3 išvedimo būdas)
+
+**1 būdas** — visi studentai išvedami į `isvedimas.txt`.  
+**3 būdas** — studentai skirstomi: nevykeliai į `nevykeliai.txt`, nerds į `nerds.txt`.
+
+---
+
+## Perdengtų operatorių aprašas
+
+`studentas` klasėje perdengiami du srautų operatoriai: `operator>>` (įvestis) ir `operator<<` (išvestis). Abu deklaruojami kaip `friend` funkcijos, nes turi tiesiogiai pasiekti `private` klasės laukus.
+
+### `operator<<` — išvesties operatorius
+
+```cpp
+friend std::ostream& operator<<(std::ostream& out, const studentas& s);
+```
+
+Išveda studento vardą, pavardę ir galutinį balą suformatuotai. Grąžina `out`, kad būtų galimas grandininis išvedimas.
+
+Naudojamas `printRez()` funkcijoje išvedant visą studentų sąrašą:
+
+```cpp
+for (const auto& s : A)
+    out << s << '\n';
+```
+
+Taip pat galima naudoti tiesiogiai:
+
+```cpp
+studentas s("Jonas", "Jonaitis", {8, 9}, 10);
+s.setGal(8.80);
+std::cout << s;
+// Jonas          	 Jonaitis      	8.80
+```
+
+### `operator>>` — įvesties operatorius
+
+```cpp
+friend std::istream& operator>>(std::istream& in, studentas& s);
+```
+
+Nuskaito vardą, pavardę, visus skaičius — paskutinis laikomas egzamino pažymiu, likusieji — namų darbų pažymiais. Grąžina `in` grandininiam skaitymui.
+
+Naudojamas `skaitytiIsFailo()` funkcijoje:
+
+```cpp
+std::istringstream iss(line);
+iss >> temp;
+```
+
+Taip pat galima naudoti tiesiogiai su `std::istringstream`:
+
+```cpp
+studentas s;
+std::istringstream iss("Jonas Jonaitis 8 9 10");
+iss >> s;
+// s.getVardas() == "Jonas", s.getEgz() == 10, paz == {8, 9}
+```
+
+---
+
 ## Kompiliavimas
 
 Reikalavimai: CMake ≥ 3.10, MinGW (Windows) arba GCC (Linux).
@@ -48,21 +150,21 @@ Vietoje `vector` galima nurodyti `list` arba `deque`.
 ### 100 000 studentų
 | Optimizavimas   | Versija  | Vykdymo laikas (ms) | Failo dydis (ms) |
 |----------------:|---------:|--------------------:|-----------------:|
-| O1     	  | struct   | 873.15              | 1035             |
+| O1              | struct   | 873.15              | 1035             |
 |                 | class    | 657.62              | 1029             |
-| O2     	  | struct   | 864.67              | 1036             |
+| O2              | struct   | 864.67              | 1036             |
 |                 | class    | 653.08              | 1026             |
-| O3     	  | struct   | 854.61              | 1055             |
+| O3              | struct   | 854.61              | 1055             |
 |                 | class    | 641.19              | 1043             |
 
 ### 1 000 000 studentų
 | Optimizavimas   | Versija  | Vykdymo laikas (ms) | Failo dydis (ms) |
 |----------------:|---------:|--------------------:|-----------------:|
-| O1     	  | struct   | 9623.41             | 1035             |
+| O1              | struct   | 9623.41             | 1035             |
 |                 | class    | 6617.74             | 1029             |
-| O2     	  | struct   | 9543.10             | 1036             |
+| O2              | struct   | 9543.10             | 1036             |
 |                 | class    | 6474.63             | 1026             |
-| O3     	  | struct   | 9424.76             | 1055             |
+| O3              | struct   | 9424.76             | 1055             |
 |                 | class    | 6518.39             | 1043             |
 
 Rezultatai rodo, kad class visais atvejais veikė greičiau nei struct. Didinant optimizavimo lygį (O1 → O3), vykdymo laikas mažėjo, o failo dydis didėjo.
@@ -164,3 +266,4 @@ Nuskaitymo ir rūšiavimo rezultatai išlieka panašūs visose trijose strategij
 | v0.3 | Funkcijos perkeltos į antraštinį (`.h`) ir realizacijos (`.cpp`) failus. Pridėtas klaidų gaudymas (`exception handling`). |
 | v0.4 | Pridėtas failų generavimas, studentų skirstymas į „nevykelius" ir „nerdus", programos spartos tyrimas su 5 skirtingo dydžio failais. |
 | v1.0 | Trys atskiros realizacijos (`vector`, `list`, `deque`). Išbandytos 3 skirstymo strategijos. Pridėtas `CMakeLists.txt`. |
+| v1.2 | `struct studentas` pertvarkyta į `class studentas` su `private` laukais, getteriais ir setteriais. Realizuoti visi Rule of Five metodai (destruktorius, kopijavimo ir perkėlimo konstruktoriai, kopijavimo ir perkėlimo priskyrimo operatoriai). Perdengiami `operator<<` ir `operator>>` įvesties/išvesties operatoriai. Pridėti vienetų testai (`test.cpp`). |
