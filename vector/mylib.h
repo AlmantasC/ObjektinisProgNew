@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
+#include <iomanip>
 
 class studentas {
 private:
@@ -79,9 +80,9 @@ public:
 
     // Išvesties operatorius
     friend std::ostream& operator<<(std::ostream& out, const studentas& s) {
-        out << s.vardas << " " << s.pavarde << " ";
-        for (int p : s.paz) out << p << " ";
-        out << s.egz;
+        out << std::left << std::setw(15) << s.vardas
+            << '\t' << std::setw(15) << s.pavarde
+            << '\t' << std::fixed << std::setprecision(2) << s.gal;
         return out;
     }
 
@@ -90,8 +91,9 @@ public:
         s.paz.clear();
         in >> s.vardas >> s.pavarde;
         int x;
-        while (in >> x && x != -1) s.paz.push_back(x);
-        in >> s.egz;
+        while (in >> x) s.paz.push_back(x);
+        s.egz = s.paz.back();
+        s.paz.pop_back();
         return in;
     }
 
@@ -119,4 +121,10 @@ bool pagalPavard(const studentas& a, const studentas& b);
 bool pagalGal(const studentas& a, const studentas& b);
 int getInt(int min, int max);
 std::string getFile();
+void printRez(std::ostream& out, std::vector<studentas>& A, int skaiciavimas);
+void ivestiRanka(std::vector<studentas>& A, int& m);
+void generuotiPazymius(std::vector<studentas>& A, int& m);
+void generuotiViska(std::vector<studentas>& A, int& m);
+void skaitytiIsFailo(std::vector<studentas>& A, int& m, std::string& failas);
 void generuotiFaila();
+void skirstymas(std::vector<studentas>& studentai, std::vector<studentas>& nevykeliai);

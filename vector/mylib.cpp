@@ -14,9 +14,8 @@ namespace chr = std::chrono;
 std::string randomstr(){
     int l = rand()%10+1;
     std::string name="", table="abcdefghijklmnopqrstuvwxyz";
-    for (int i=0; i<l; i++) {
+    for (int i=0; i<l; i++)
         name+=table[rand()%26];
-    }
     name[0]=toupper(name[0]);
     return name;
 }
@@ -76,14 +75,7 @@ std::string getFile() {
     }
 }
 
-void printRez(std::ostream& out, std::vector<studentas>& A, int skaiciavimas) {
-    out<<std::fixed<<std::setprecision(2)<<std::left<<std::setw(15)<<"Vardas"<<std::setw(15)<<" Pavardė"<<"\tGalutinis ";
-    out<<(skaiciavimas == 1 ? "(Vid.)" : "(Med.)");
-    out<<"\n------------------------------------------------\n";
-    for (const auto& s : A) {
-        out<<std::left<<std::setw(15)<<s.getVardas()<<'\t'<<std::setw(15)<<s.getPavarde()<<'\t'<<s.getGal()<<'\n';
-    }
-}
+
 
 void ivestiRanka(std::vector<studentas>& A, int& m) {
     studentas temp;
@@ -156,25 +148,15 @@ void generuotiViska(std::vector<studentas>& A, int& m) {
 }
 
 void skaitytiIsFailo(std::vector<studentas>& A, int& m, std::string& failas) {
-    studentas temp;
-    int x;
     std::string line;
     std::ifstream fin(failas);
     std::getline(fin, line); // antraštė
     while (std::getline(fin, line)) {
-        m++;
-        temp.clearPaz();
+        studentas temp;
         std::istringstream iss(line);
-        std::string v, p;
-        iss>>v>>p;
-        temp.setVardas(v);
-        temp.setPavarde(p);
-        std::vector<int> visiSk;
-        while (iss>>x) visiSk.push_back(x);
-        temp.setEgz(visiSk.back());
-        visiSk.pop_back();
-        temp.setPaz(visiSk);
-        A.push_back(temp);
+        iss >> temp;
+        A.push_back(std::move(temp));
+        m++;
     }
     fin.close();
 }
@@ -188,15 +170,13 @@ void generuotiFaila(){
 
     std::ofstream fout("generuotas.txt");
     fout<<std::left<<std::setw(20)<<"Vardas"<<std::setw(20)<<"Pavarde";
-    for (int i=0; i<15; i++) {
+    for (int i=0; i<15; i++)
         fout<<std::setw(20)<<("ND" + std::to_string(i + 1));
-    }
     fout<<"Egz.";
     for (int i=1; i<=n; i++) {
         fout<<'\n'<<std::setw(20)<<("Vardas"+std::to_string(i))<<std::setw(20)<<("Pavarde"+std::to_string(i));
-        for (int j=0; j<16; j++) {
+        for (int j=0; j<16; j++)
             fout<<std::setw(20)<<rand()%10+1;
-        }
     }
     fout.close();
 
