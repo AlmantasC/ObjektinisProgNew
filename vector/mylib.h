@@ -77,6 +77,24 @@ public:
     void setRez(double r)                  { rez = r; }
     void setGal(double g)                  { gal = g; }
 
+    // Išvesties operatorius
+    friend std::ostream& operator<<(std::ostream& out, const studentas& s) {
+        out << s.vardas << " " << s.pavarde << " ";
+        for (int p : s.paz) out << p << " ";
+        out << s.egz;
+        return out;
+    }
+
+    // Įvesties operatorius
+    friend std::istream& operator>>(std::istream& in, studentas& s) {
+        s.paz.clear();
+        in >> s.vardas >> s.pavarde;
+        int x;
+        while (in >> x && x != -1) s.paz.push_back(x);
+        in >> s.egz;
+        return in;
+    }
+
     // Skaičiavimai
     double vid() const {
         if (paz.empty()) return 0.0;
