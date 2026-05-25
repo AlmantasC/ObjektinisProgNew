@@ -1,0 +1,130 @@
+#pragma once
+#include <string>
+#include <vector>
+#include <fstream>
+#include <algorithm>
+#include <iomanip>
+
+class studentas {
+private:
+    std::string vardas, pavarde;
+    std::vector<int> paz;
+    int egz;
+    double rez;
+    double gal;
+
+public:
+    // Konstruktoriai
+    studentas()
+        : vardas(""), pavarde(""), egz(0), rez(0.0), gal(0.0) {}
+
+    studentas(const std::string& v, const std::string& p,
+              const std::vector<int>& pazymiai, int e)
+        : vardas(v), pavarde(p), paz(pazymiai), egz(e), rez(0.0), gal(0.0) {}
+
+    // 1. Destruktorius
+    ~studentas() {}
+
+    // 2. Kopijavimo konstruktorius
+    studentas(const studentas& other)
+        : vardas(other.vardas), pavarde(other.pavarde), paz(other.paz),
+          egz(other.egz), rez(other.rez), gal(other.gal) {}
+
+    // 3. Kopijavimo priskyrimo operatorius
+    studentas& operator=(const studentas& other) {
+        if (this == &other) return *this;
+        vardas  = other.vardas;
+        pavarde = other.pavarde;
+        paz     = other.paz;
+        egz     = other.egz;
+        rez     = other.rez;
+        gal     = other.gal;
+        return *this;
+    }
+
+    // 4. Perkėlimo konstruktorius
+    studentas(studentas&& other) noexcept
+        : vardas(std::move(other.vardas)), pavarde(std::move(other.pavarde)),
+          paz(std::move(other.paz)), egz(other.egz), rez(other.rez), gal(other.gal) {
+        other.egz = 0; other.rez = 0.0; other.gal = 0.0;
+    }
+
+    // 5. Perkėlimo priskyrimo operatorius
+    studentas& operator=(studentas&& other) noexcept {
+        if (this == &other) return *this;
+        vardas  = std::move(other.vardas);
+        pavarde = std::move(other.pavarde);
+        paz     = std::move(other.paz);
+        egz     = other.egz;  rez = other.rez;  gal = other.gal;
+        other.egz = 0; other.rez = 0.0; other.gal = 0.0;
+        return *this;
+    }
+
+    // Getteriai
+    std::string getVardas()   const { return vardas; }
+    std::string getPavarde()  const { return pavarde; }
+    std::vector<int> getPaz() const { return paz; }
+    int    getEgz() const { return egz; }
+    double getRez() const { return rez; }
+    double getGal() const { return gal; }
+
+    // Setteriai
+    void setVardas(const std::string& v)   { vardas = v; }
+    void setPavarde(const std::string& p)  { pavarde = p; }
+    void setPaz(const std::vector<int>& p) { paz = p; }
+    void addPaz(int p)                     { paz.push_back(p); }
+    void clearPaz()                        { paz.clear(); }
+    void setEgz(int e)                     { egz = e; }
+    void setRez(double r)                  { rez = r; }
+    void setGal(double g)                  { gal = g; }
+
+    // Išvesties operatorius
+    friend std::ostream& operator<<(std::ostream& out, const studentas& s) {
+        out << std::left << std::setw(15) << s.vardas
+            << '\t' << std::setw(15) << s.pavarde
+            << '\t' << std::fixed << std::setprecision(2) << s.gal;
+        return out;
+    }
+
+    // Įvesties operatorius
+    friend std::istream& operator>>(std::istream& in, studentas& s) {
+        s.paz.clear();
+        in >> s.vardas >> s.pavarde;
+        int x;
+        while (in >> x) s.paz.push_back(x);
+        s.egz = s.paz.back();
+        s.paz.pop_back();
+        return in;
+    }
+
+    // Skaičiavimai
+    double vid() const {
+        if (paz.empty()) return 0.0;
+        double suma = 0;
+        for (int p : paz) suma += p;
+        return suma / paz.size();
+    }
+
+    double med() const {
+        if (paz.empty()) return 0.0;
+        std::vector<int> sorted = paz;
+        std::sort(sorted.begin(), sorted.end());
+        int n = sorted.size();
+        if (n % 2 == 0) return (sorted[n/2-1] + sorted[n/2]) / 2.0;
+        else             return sorted[n/2];
+    }
+};
+
+std::string randomstr();
+bool pagalVard(const studentas& a, const studentas& b);
+bool pagalPavard(const studentas& a, const studentas& b);
+bool pagalGal(const studentas& a, const studentas& b);
+int getInt(int min, int max);
+std::string getFile();
+void printRez(std::ostream& out, std::vector<studentas>& A, int skaiciavimas);
+void ivestiRanka(std::vector<studentas>& A, int& m);
+void generuotiPazymius(std::vector<studentas>& A, int& m);
+void generuotiViska(std::vector<studentas>& A, int& m);
+void skaitytiIsFailo(std::vector<studentas>& A, int& m, std::string& failas);
+void generuotiFaila();
+void skirstymas(std::vector<studentas>& studentai, std::vector<studentas>& nevykeliai);
