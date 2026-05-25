@@ -83,7 +83,7 @@ int main(){
     switch (rusiavimas) {
         case 1: A.sort(pagalVard); if (isvedimas==3) nevykeliai.sort(pagalVard); break;
         case 2: A.sort(pagalPavard); if (isvedimas==3) nevykeliai.sort(pagalPavard); break;
-        case 3: A.sort(pagalGal); if (isvedimas==3) A.sort(pagalGal); break;
+        case 3: A.sort(pagalGal); if (isvedimas==3) nevykeliai.sort(pagalGal); break;
     }
     auto tRusiavimasEnd = chr::high_resolution_clock::now();
     cout<<"\nRūšiavimas:        "<< ms(tRusiavimasEnd-tRusiavimasStart) <<" ms";
