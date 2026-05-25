@@ -65,6 +65,8 @@ Vietoje `vector` galima nurodyti `list` arba `deque`.
 | O3     	  | struct   | 9424.76             | 1055             |
 |                 | class    | 6518.39             | 1043             |
 
+Rezultatai rodo, kad class visais atvejais veikė greičiau nei struct. Didinant optimizavimo lygį (O1 → O3), vykdymo laikas mažėjo, o failo dydis didėjo.
+
 ---
 
 ## Spartos tyrimas
