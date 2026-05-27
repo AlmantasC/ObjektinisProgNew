@@ -131,17 +131,27 @@ iss >> s;
 
 ## Kompiliavimas
 
-Reikalavimai: CMake ≥ 3.10, MinGW (Windows) arba GCC (Linux).
+Reikalavimai: CMake ≥ 3.14, MinGW (Windows) arba GCC (Linux).
 
 ```bash
 mkdir build
 cd build
-cmake .. -G "MinGW Makefiles"   # Windows
-# cmake ..                      # Linux
-cmake --build . --target vector
+cmake .. -G "MinGW Makefiles" -DCONTAINER=vector   # Windows
+# cmake .. -DCONTAINER=vector                       # Linux
+cmake --build .
 ```
 
-Vietoje `vector` galima nurodyti `list` arba `deque`.
+Vietoje `vector` galima nurodyti `list` arba `deque`. Numatytoji reikšmė — `vector`.
+
+### Testų kompiliavimas ir paleidimas
+
+```bash
+cmake .. -G "MinGW Makefiles" -DCONTAINER=vector -DBUILD_TESTS=ON
+cmake --build .
+ctest --output-on-failure
+# arba tiesiogiai:
+./tests
+```
 
 ---
 
@@ -173,39 +183,30 @@ Rezultatai rodo, kad class visais atvejais veikė greičiau nei struct. Didinant
 
 ## Vienetų testai
 
-Projektui taip pat pridėti vienetų testai (`test.cpp`), kurie tikrina pagrindinį `studentas` klasės funkcionalumą ir Rule of Five realizaciją. Testai atliekami naudojant standartinę C++ `assert` biblioteką.
+Vienetų testai (`test/main.cpp`) realizuoti naudojant **Google Test** karkasą. Testai tikrina pagrindinį `studentas` klasės funkcionalumą ir Rule of Five realizaciją. GTest atsisiunčiamas automatiškai per CMake `FetchContent` — rankinio diegimo nereikia.
 
 Testuojamos šios dalys:
 
-* Destruktorius.
-* Numatytasis ir parametrinis konstruktoriai.
+* Numatytasis konstruktorius.
 * Kopijavimo konstruktorius.
 * Kopijavimo priskyrimo operatorius.
 * Perkėlimo konstruktorius.
 * Perkėlimo priskyrimo operatorius.
-* Įvesties (`operator>>`) ir išvesties (`operator<<`) operatoriai.
-* `vid()` ir `med()` funkcijos.
-* Objektų nepriklausomumas po kopijavimo.
-* Korektiška būsena po perkėlimo (`move semantics`).
+* `vid()` ir `med()` funkcijos (įskaitant kraštinį atvejį — tuščias pažymių sąrašas).
+* Galutinio balo skaičiavimas vidurkiu ir mediana.
+* `skirstymas()` — teisingas skaidymas, visi vykeliai, visi nevykeliai, tuščias konteineris.
+* `printRez()` — išvesties patikrinimas per `std::ostringstream`.
 
 Sėkmingai praėjus testams išvedama:
 
 ```text
-[OK] Destruktorius
-[OK] Numatytasis konstruktorius
-[OK] Parametrinis konstruktorius
-[OK] Kopijavimo konstruktorius
-[OK] Kopijavimo priskyrimo operatorius
-[OK] Perkėlimo konstruktorius
-[OK] Perkėlimo priskyrimo operatorius
-[OK] Išvesties operatorius <<
-[OK] Įvesties operatorius >>
-[OK] >> / << round-trip
-[OK] vid()
-[OK] med() nelyginis
-[OK] med() lyginis
-
-Visi testai praejo.
+[==========] Running 18 tests from 4 test suites.
+[----------] 5 tests from StudentasKonstruktorius
+[ RUN      ] StudentasKonstruktorius.Numatytasis
+[       OK ] StudentasKonstruktorius.Numatytasis
+...
+[==========] 18 tests from 4 test suites ran.
+[  PASSED  ] 18 tests.
 ```
 
 ### Testų paskirtis
@@ -215,8 +216,8 @@ Testai skirti užtikrinti, kad:
 * Rule of Five metodai veikia korektiškai.
 * Objektų kopijavimas nesukelia bendrų duomenų problemų.
 * Perkėlus objektą jo būsena išlieka validi.
-* Įvesties/išvesties operatoriai teisingai apdoroja duomenis.
 * Vidurkio ir medianos skaičiavimai grąžina teisingus rezultatus.
+* `skirstymas()` teisingai atskiria nevykelius visais kraštiniais atvejais.
 
 ---
 
@@ -306,6 +307,21 @@ Nuskaitymo ir rūšiavimo rezultatai išlieka panašūs visose trijose strategij
 
 ---
 
+## Dokumentacija
+
+Projekto dokumentacija sugeneruota naudojant **Doxygen** ir prieinama `docs/` kataloge.
+
+- `docs/html/index.html` — naršyklėje peržiūrima HTML dokumentacija.
+- `docs/latex/refman.pdf` — sukompiliuotas PDF.
+
+### Dokumentacijos generavimas
+
+```bash
+doxygen Doxyfile
+```
+
+---
+
 ## Versijų istorija
 
 | Versija | Pakeitimai |
@@ -316,4 +332,5 @@ Nuskaitymo ir rūšiavimo rezultatai išlieka panašūs visose trijose strategij
 | v0.4 | Pridėtas failų generavimas, studentų skirstymas į „nevykelius" ir „nerdus", programos spartos tyrimas su 5 skirtingo dydžio failais. |
 | v1.0 | Trys atskiros realizacijos (`vector`, `list`, `deque`). Išbandytos 3 skirstymo strategijos. Pridėtas `CMakeLists.txt`. |
 | v1.2 | `struct studentas` pertvarkyta į `class studentas` su `private` laukais, getteriais ir setteriais. Realizuoti visi Rule of Five metodai (destruktorius, kopijavimo ir perkėlimo konstruktoriai, kopijavimo ir perkėlimo priskyrimo operatoriai). Perdengiami `operator<<` ir `operator>>` įvesties/išvesties operatoriai. Pridėti vienetų testai (`test.cpp`). |
-| v1.5 | Pridėta abstrakti klasė `Zmogus`, iš kurios išvedama klasė `Studentas`
+| v1.5 | Pridėta abstrakti klasė `Zmogus`, iš kurios išvedama klasė `Studentas` |
+| v2.0 | Bendras `src/` kodas visiems konteineriams — konteineris pasirenkamas per `-DCONTAINER=` CMake flagą. Vienetų testai perkelti į Google Test karkasą (18 testų). Pridėta Doxygen dokumentacija (HTML + PDF). |
