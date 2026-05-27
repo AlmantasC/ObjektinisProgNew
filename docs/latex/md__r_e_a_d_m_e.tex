@@ -1,0 +1,356 @@
+\chapter{Objektinis\+Prog }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{ObjektinisProg@{ObjektinisProg}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Naudojimosi instrukcija}{Naudojimosi instrukcija}}\label{md__r_e_a_d_m_e_autotoc_md1}
+Funkcijos:\+
+\begin{DoxyItemize}
+\item Pasirinktinas išvestis į failą arba į terminalą.
+\item Pasirinktinas galutinio rezultato skaičiavimas, remiantis vidurkiu arba mediana.
+\item Rūšiavimas pasirinktinu būdu.
+\item Studentų skirstymas į „nevykelius"{} (galutinis $<$ 5) ir „nerdus"{} (galutinis ≥ 5).
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1\ parinktis\ -\/\ rankinis\ duomenų\ įvedimas:\ studento\ vardo,\ pavardės,\ namų\ darbų\ rezultatų,\ egzamino\ rezultato.}
+\DoxyCodeLine{2\ parinktis\ -\/\ pusiau\ rankinis\ įvedimas:\ studento\ vardo,\ pavardės\ įvedimas,\ rezultatų\ generavimas.}
+\DoxyCodeLine{3\ parinktis\ -\/\ automatinis\ studentų\ vardų,\ pavardžių,\ rezultatų\ generavimas,\ jų\ apdorojimas\ ir\ išvedimas.}
+\DoxyCodeLine{4\ parinktis\ -\/\ skaitymas\ iš\ pasirinkto\ failo,\ rūšiavimas\ pasirinktinu\ būdu,\ duomenų\ apdorojimas\ ir\ išvedimas.}
+\DoxyCodeLine{5\ parinktis\ -\/\ studentų\ failų\ generavimas:\ studentų,\ namų\ darbų\ kiekio\ pasirinkimas\ ir\ išvedimas\ į\ studentų\ failą.}
+\DoxyCodeLine{6\ parinktis\ -\/\ programos\ nutraukimas.}
+
+\end{DoxyCode}
+
+
+Pasirinkus 1–4 parinktį, programa toliau klausia:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Rūšiavimo\ kriterijus\ \ -\/\ pagal\ vardą,\ pavardę\ arba\ galutinį\ balą.}
+\DoxyCodeLine{Skaičiavimo\ būdas\ \ \ \ \ -\/\ galutinis\ balas\ skaičiuojamas\ vidurkiu\ arba\ mediana.}
+\DoxyCodeLine{Išvedimo\ būdas\ \ \ \ \ \ \ \ -\/\ į\ failą,\ į\ ekraną\ arba\ skirstymas\ į\ „nevykelių"{}\ ir\ „nerdų"{}\ failus.}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Duomenų įvestis ir išvestis}{Duomenų įvestis ir išvestis}}\label{md__r_e_a_d_m_e_autotoc_md3}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{Įvestis rankiniu būdu (1 parinktis)}{Įvestis rankiniu būdu (1 parinktis)}}\label{md__r_e_a_d_m_e_autotoc_md4}
+Vartotojas įveda kiekvieno studento duomenis ranka. Programa prašo vardo, pavardės, namų darbų pažymių (baigiama įvedant {\ttfamily -\/1}) ir egzamino pažymio. Naudojama {\ttfamily \doxylink{mylib_8cpp_a81d8087f3257c783f8ba4479f103835b}{get\+Int()}} funkcija su validacija — neteisingi įvedimai atmetami.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Įrašykite\ studento\ vardą\ (arba\ -\/1\ baigti):\ Jonas}
+\DoxyCodeLine{Įrašykite\ studento\ pavardę:\ Jonaitis}
+\DoxyCodeLine{Įrašykite\ studento\ nd\ pažymį\ (arba\ -\/1\ baigti):\ 8}
+\DoxyCodeLine{Įrašykite\ studento\ nd\ pažymį\ (arba\ -\/1\ baigti):\ 9}
+\DoxyCodeLine{Įrašykite\ studento\ nd\ pažymį\ (arba\ -\/1\ baigti):\ -\/1}
+\DoxyCodeLine{Įrašykite\ studento\ egzamino\ pažymį:\ 10}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{Įvestis automatiniu būdu (2 ir 3 parinktis)}{Įvestis automatiniu būdu (2 ir 3 parinktis)}}\label{md__r_e_a_d_m_e_autotoc_md5}
+{\bfseries{2 parinktis}} — vartotojas įveda vardą ir pavardę, pažymiai generuojami atsitiktinai. ~\newline
+ {\bfseries{3 parinktis}} — viskas generuojama automatiškai:\+ vardai, pavardės, pažymiai.\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{\texorpdfstring{Įvestis iš failo (4 parinktis)}{Įvestis iš failo (4 parinktis)}}\label{md__r_e_a_d_m_e_autotoc_md6}
+Programa nuskaito studentų duomenis iš tekstinio failo. Failo formatas:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Vardas\ \ \ \ \ \ \ \ \ \ \ \ \ \ Pavarde\ \ \ \ \ \ \ \ \ \ \ \ \ ND1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ND2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ...\ Egz.}
+\DoxyCodeLine{Vardas1\ \ \ \ \ \ \ \ \ \ \ \ \ Pavarde1\ \ \ \ \ \ \ \ \ \ \ \ 7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ...\ 9}
+
+\end{DoxyCode}
+
+
+Kiekviena eilutė nuskaitoma per {\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}, kuris automatiškai išskiria vardą, pavardę, namų darbų pažymius ir egzaminą.\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{Išvestis į ekraną (2 išvedimo būdas)}{Išvestis į ekraną (2 išvedimo būdas)}}\label{md__r_e_a_d_m_e_autotoc_md7}
+Rezultatai spausdinami į terminalą per {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Vardas\ \ \ \ \ \ \ \ \ \ \ Pavardė\ \ \ \ \ \ \ \ Galutinis\ (Vid.)}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{Jonas\ \ \ \ \ \ \ \ \ \ \ \ Jonaitis\ \ \ \ \ \ \ 8.80}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{\texorpdfstring{Išvestis į failą (1 ir 3 išvedimo būdas)}{Išvestis į failą (1 ir 3 išvedimo būdas)}}\label{md__r_e_a_d_m_e_autotoc_md8}
+{\bfseries{1 būdas}} — visi studentai išvedami į {\ttfamily isvedimas.\+txt}. ~\newline
+ {\bfseries{3 būdas}} — studentai skirstomi:\+ nevykeliai į {\ttfamily nevykeliai.\+txt}, nerds į {\ttfamily nerds.\+txt}.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{Perdengtų operatorių aprašas}{Perdengtų operatorių aprašas}}\label{md__r_e_a_d_m_e_autotoc_md10}
+{\ttfamily \doxylink{classstudentas}{studentas}} klasėje perdengiami du srautų operatoriai:\+ {\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} (įvestis) ir {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} (išvestis). Abu deklaruojami kaip {\ttfamily friend} funkcijos, nes turi tiesiogiai pasiekti {\ttfamily private} klasės laukus.\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\texorpdfstring{{\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} — išvesties operatorius}{{\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} — išvesties operatorius}}\label{md__r_e_a_d_m_e_autotoc_md11}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ out,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classstudentas}{studentas}}\&\ s);}
+
+\end{DoxyCode}
+
+
+Išveda studento vardą, pavardę ir galutinį balą suformatuotai. Grąžina {\ttfamily out}, kad būtų galimas grandininis išvedimas.
+
+Naudojamas {\ttfamily \doxylink{mylib_8cpp_a51a3dcd0a5d07efd6fc7b3f02fa0a82d}{print\+Rez()}} funkcijoje išvedant visą studentų sąrašą:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s\ :\ A)}
+\DoxyCodeLine{\ \ \ \ out\ <<\ s\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+
+\end{DoxyCode}
+
+
+Taip pat galima naudoti tiesiogiai:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{classstudentas}{studentas}}\ s(\textcolor{stringliteral}{"{}Jonas"{}},\ \textcolor{stringliteral}{"{}Jonaitis"{}},\ \{8,\ 9\},\ 10);}
+\DoxyCodeLine{s.\doxymbox{\hyperlink{classstudentas_a94de4772d40b29a21296a944f6f57bb8}{setGal}}(8.80);}
+\DoxyCodeLine{std::cout\ <<\ s;}
+\DoxyCodeLine{\textcolor{comment}{//\ Jonas\ \ \ \ \ \ \ \ \ \ \ \ \ Jonaitis\ \ \ \ \ \ \ 8.80}}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsection{\texorpdfstring{{\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} — įvesties operatorius}{{\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} — įvesties operatorius}}\label{md__r_e_a_d_m_e_autotoc_md12}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{friend}\ std::istream\&\ operator>>(std::istream\&\ in,\ \doxymbox{\hyperlink{classstudentas}{studentas}}\&\ s);}
+
+\end{DoxyCode}
+
+
+Nuskaito vardą, pavardę, visus skaičius — paskutinis laikomas egzamino pažymiu, likusieji — namų darbų pažymiais. Grąžina {\ttfamily in} grandininiam skaitymui.
+
+Naudojamas {\ttfamily \doxylink{mylib_8cpp_a0aa3b54459502a278f12bb81a0164d5d}{skaityti\+Is\+Failo()}} funkcijoje:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::istringstream\ iss(line);}
+\DoxyCodeLine{iss\ >>\ temp;}
+
+\end{DoxyCode}
+
+
+Taip pat galima naudoti tiesiogiai su {\ttfamily std::\+istringstream}:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{classstudentas}{studentas}}\ s;}
+\DoxyCodeLine{std::istringstream\ iss(\textcolor{stringliteral}{"{}Jonas\ Jonaitis\ 8\ 9\ 10"{}});}
+\DoxyCodeLine{iss\ >>\ s;}
+\DoxyCodeLine{\textcolor{comment}{//\ s.getVardas()\ ==\ "{}Jonas"{},\ s.getEgz()\ ==\ 10,\ paz\ ==\ \{8,\ 9\}}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysection{\texorpdfstring{Kompiliavimas}{Kompiliavimas}}\label{md__r_e_a_d_m_e_autotoc_md14}
+Reikalavimai:\+ CMake ≥ 3.\+14, Min\+GW (Windows) arba GCC (Linux).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{cmake\ ..\ -\/G\ "{}MinGW\ Makefiles"{}\ -\/DCONTAINER=vector\ \ \ \#\ Windows}
+\DoxyCodeLine{\#\ cmake\ ..\ -\/DCONTAINER=vector\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Linux}
+\DoxyCodeLine{cmake\ -\/-\/build\ .}
+
+\end{DoxyCode}
+
+
+Vietoje {\ttfamily vector} galima nurodyti {\ttfamily list} arba {\ttfamily deque}. Numatytoji reikšmė — {\ttfamily vector}.\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{\texorpdfstring{Testų kompiliavimas ir paleidimas}{Testų kompiliavimas ir paleidimas}}\label{md__r_e_a_d_m_e_autotoc_md15}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/G\ "{}MinGW\ Makefiles"{}\ -\/DCONTAINER=vector\ -\/DBUILD\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ .}
+\DoxyCodeLine{ctest\ -\/-\/output-\/on-\/failure}
+\DoxyCodeLine{\#\ arba\ tiesiogiai:}
+\DoxyCodeLine{./tests}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysection{\texorpdfstring{Klasės ir Struct Kompiliavimo flag\textquotesingle{}ų testas}{Klasės ir Struct Kompiliavimo flag\textquotesingle{}ų testas}}\label{md__r_e_a_d_m_e_autotoc_md17}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysubsection{\texorpdfstring{100 000 studentų}{100 000 studentų}}\label{md__r_e_a_d_m_e_autotoc_md18}
+
+\begin{DoxyTable}{4}{}{}{1}
+\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Optimizavimas  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Versija  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Vykdymo laikas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Failo dydis (ms)  \\
+\SetCell{r}O1  &\SetCell{r}struct  &\SetCell{r}873.\+15  &\SetCell{r}1035  \\
+\SetCell{r}&\SetCell{r}class  &\SetCell{r}657.\+62  &\SetCell{r}1029  \\
+\SetCell{r}O2  &\SetCell{r}struct  &\SetCell{r}864.\+67  &\SetCell{r}1036  \\
+\SetCell{r}&\SetCell{r}class  &\SetCell{r}653.\+08  &\SetCell{r}1026  \\
+\SetCell{r}O3  &\SetCell{r}struct  &\SetCell{r}854.\+61  &\SetCell{r}1055  \\
+\SetCell{r}&\SetCell{r}class  &\SetCell{r}641.\+19  &\SetCell{r}1043  \\
+\end{DoxyTable}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{\texorpdfstring{1 000 000 studentų}{1 000 000 studentų}}\label{md__r_e_a_d_m_e_autotoc_md19}
+
+\begin{DoxyTable}{4}{}{}{1}
+\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Optimizavimas  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Versija  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Vykdymo laikas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Failo dydis (ms)  \\
+\SetCell{r}O1  &\SetCell{r}struct  &\SetCell{r}9623.\+41  &\SetCell{r}1035  \\
+\SetCell{r}&\SetCell{r}class  &\SetCell{r}6617.\+74  &\SetCell{r}1029  \\
+\SetCell{r}O2  &\SetCell{r}struct  &\SetCell{r}9543.\+10  &\SetCell{r}1036  \\
+\SetCell{r}&\SetCell{r}class  &\SetCell{r}6474.\+63  &\SetCell{r}1026  \\
+\SetCell{r}O3  &\SetCell{r}struct  &\SetCell{r}9424.\+76  &\SetCell{r}1055  \\
+\SetCell{r}&\SetCell{r}class  &\SetCell{r}6518.\+39  &\SetCell{r}1043  \\
+\end{DoxyTable}
+
+
+Rezultatai rodo, kad class visais atvejais veikė greičiau nei struct. Didinant optimizavimo lygį (O1 → O3), vykdymo laikas mažėjo, o failo dydis didėjo.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysection{\texorpdfstring{Vienetų testai}{Vienetų testai}}\label{md__r_e_a_d_m_e_autotoc_md21}
+Vienetų testai ({\ttfamily \doxylink{test_2main_8cpp}{test/\+main.\+cpp}}) realizuoti naudojant {\bfseries{Google Test}} karkasą. Testai tikrina pagrindinį {\ttfamily \doxylink{classstudentas}{studentas}} klasės funkcionalumą ir Rule of Five realizaciją. GTest atsisiunčiamas automatiškai per CMake {\ttfamily Fetch\+Content} — rankinio diegimo nereikia.
+
+Testuojamos šios dalys:\+
+
+
+\begin{DoxyItemize}
+\item Numatytasis konstruktorius.
+\item Kopijavimo konstruktorius.
+\item Kopijavimo priskyrimo operatorius.
+\item Perkėlimo konstruktorius.
+\item Perkėlimo priskyrimo operatorius.
+\item {\ttfamily vid()} ir {\ttfamily med()} funkcijos (įskaitant kraštinį atvejį — tuščias pažymių sąrašas).
+\item Galutinio balo skaičiavimas vidurkiu ir mediana.
+\item {\ttfamily \doxylink{mylib_8cpp_a30dbc396804076b8d86c242ed4d23ace}{skirstymas()}} — teisingas skaidymas, visi vykeliai, visi nevykeliai, tuščias konteineris.
+\item {\ttfamily \doxylink{mylib_8cpp_a51a3dcd0a5d07efd6fc7b3f02fa0a82d}{print\+Rez()}} — išvesties patikrinimas per {\ttfamily std::\+ostringstream}.
+\end{DoxyItemize}
+
+Sėkmingai praėjus testams išvedama:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[==========]\ Running\ 18\ tests\ from\ 4\ test\ suites.}
+\DoxyCodeLine{[-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/]\ 5\ tests\ from\ StudentasKonstruktorius}
+\DoxyCodeLine{[\ RUN\ \ \ \ \ \ ]\ StudentasKonstruktorius.Numatytasis}
+\DoxyCodeLine{[\ \ \ \ \ \ \ OK\ ]\ StudentasKonstruktorius.Numatytasis}
+\DoxyCodeLine{...}
+\DoxyCodeLine{[==========]\ 18\ tests\ from\ 4\ test\ suites\ ran.}
+\DoxyCodeLine{[\ \ PASSED\ \ ]\ 18\ tests.}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{\texorpdfstring{Testų paskirtis}{Testų paskirtis}}\label{md__r_e_a_d_m_e_autotoc_md22}
+Testai skirti užtikrinti, kad:\+
+
+
+\begin{DoxyItemize}
+\item Rule of Five metodai veikia korektiškai.
+\item Objektų kopijavimas nesukelia bendrų duomenų problemų.
+\item Perkėlus objektą jo būsena išlieka validi.
+\item Vidurkio ir medianos skaičiavimai grąžina teisingus rezultatus.
+\item {\ttfamily \doxylink{mylib_8cpp_a30dbc396804076b8d86c242ed4d23ace}{skirstymas()}} teisingai atskiria nevykelius visais kraštiniais atvejais.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{\texorpdfstring{Spartos tyrimas}{Spartos tyrimas}}\label{md__r_e_a_d_m_e_autotoc_md24}
+Tyrimui naudojami prieš tai sugeneruoti failai. Bandyti visi rūšiavimo ir galutinio skaičiavimo būdai, rezultatai išreikšti vidurkiu.
+
+{\bfseries{Specs:\+}} AMD Ryzen 5 3600 · HyperX DDR4 16GB · SSD 970 M.\+2 250GB
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysubsection{\texorpdfstring{1 strategija}{1 strategija}}\label{md__r_e_a_d_m_e_autotoc_md26}
+Bendro studentai konteinerio skaidymas į du naujus to paties tipo konteinerius:\+ „nevykeliai"{} ir „nerds"{}. Tokiu būdu tas pats studentas yra dvejuose konteineriuose:\+ bendrame studentai ir viename iš suskaidytų.
+
+
+\begin{DoxyTable}{5}{}{}{1}
+\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Studentų kiekis  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Konteineris  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Nuskaitymas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Rūšiavimas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Skirstymas (ms)  \\
+\SetCell{r}1 000  &vector  &\SetCell{r}2.\+53  &\SetCell{r}0.\+18  &\SetCell{r}0.\+09  \\
+\SetCell{r}&deque  &\SetCell{r}1.\+74  &\SetCell{r}0.\+21  &\SetCell{r}0.\+08  \\
+\SetCell{r}&list  &\SetCell{r}2.\+07  &\SetCell{r}0.\+09  &\SetCell{r}0.\+11  \\
+\SetCell{r}10 000  &vector  &\SetCell{r}45.\+12  &\SetCell{r}26.\+47  &\SetCell{r}0.\+43  \\
+\SetCell{r}&deque  &\SetCell{r}41.\+61  &\SetCell{r}29.\+34  &\SetCell{r}0.\+29  \\
+\SetCell{r}&list  &\SetCell{r}49.\+38  &\SetCell{r}13.\+02  &\SetCell{r}0.\+37  \\
+\SetCell{r}100 000  &vector  &\SetCell{r}439.\+84  &\SetCell{r}363.\+55  &\SetCell{r}16.\+28  \\
+\SetCell{r}&deque  &\SetCell{r}441.\+07  &\SetCell{r}404.\+92  &\SetCell{r}15.\+83  \\
+\SetCell{r}&list  &\SetCell{r}451.\+29  &\SetCell{r}171.\+84  &\SetCell{r}24.\+51  \\
+\SetCell{r}1 000 000  &vector  &\SetCell{r}4397.\+41  &\SetCell{r}4868.\+73  &\SetCell{r}192.\+74  \\
+\SetCell{r}&deque  &\SetCell{r}4418.\+56  &\SetCell{r}5341.\+08  &\SetCell{r}169.\+17  \\
+\SetCell{r}&list  &\SetCell{r}4454.\+83  &\SetCell{r}2207.\+16  &\SetCell{r}220.\+39  \\
+\SetCell{r}10 000 000  &vector  &\SetCell{r}44284.\+6  &\SetCell{r}62254.\+37  &\SetCell{r}1880.\+62  \\
+\SetCell{r}&deque  &\SetCell{r}44514.\+8  &\SetCell{r}69897.\+44  &\SetCell{r}1865.\+93  \\
+\SetCell{r}&list  &\SetCell{r}44742.\+3  &\SetCell{r}28843.\+91  &\SetCell{r}2444.\+18  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysubsection{\texorpdfstring{2 strategija}{2 strategija}}\label{md__r_e_a_d_m_e_autotoc_md28}
+Bendro studentų konteinerio skaidymas panaudojant tik vieną naują konteinerį:\+ „nevykeliai"{}. Tokiu būdu, jei studentas yra nevykelis, jį turime įkelti į naująjį „nevykelių"{} konteinerį ir ištrinti iš bendro studentai konteinerio. Po šio žingsnio studentai konteineryje liks vien tik nerds.
+
+
+\begin{DoxyTable}{5}{}{}{1}
+\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Studentų kiekis  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Konteineris  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Nuskaitymas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Rūšiavimas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Skirstymas (ms)  \\
+\SetCell{r}1 000  &vector  &\SetCell{r}4.\+67  &\SetCell{r}2.\+00  &\SetCell{r}0.\+36  \\
+\SetCell{r}&deque  &\SetCell{r}4.\+32  &\SetCell{r}0.\+67  &\SetCell{r}0.\+00  \\
+\SetCell{r}&list  &\SetCell{r}5.\+67  &\SetCell{r}0.\+99  &\SetCell{r}0.\+33  \\
+\SetCell{r}10 000  &vector  &\SetCell{r}43.\+85  &\SetCell{r}28.\+67  &\SetCell{r}2.\+00  \\
+\SetCell{r}&deque  &\SetCell{r}49.\+99  &\SetCell{r}29.\+15  &\SetCell{r}0.\+00  \\
+\SetCell{r}&list  &\SetCell{r}45.\+86  &\SetCell{r}14.\+33  &\SetCell{r}0.\+99  \\
+\SetCell{r}100 000  &vector  &\SetCell{r}427.\+02  &\SetCell{r}377.\+19  &\SetCell{r}12.\+96  \\
+\SetCell{r}&deque  &\SetCell{r}435.\+62  &\SetCell{r}246.\+08  &\SetCell{r}13.\+86  \\
+\SetCell{r}&list  &\SetCell{r}450.\+60  &\SetCell{r}186.\+96  &\SetCell{r}21.\+33  \\
+\SetCell{r}1 000 000  &vector  &\SetCell{r}4294.\+58  &\SetCell{r}5088.\+73  &\SetCell{r}141.\+03  \\
+\SetCell{r}&deque  &\SetCell{r}4357.\+09  &\SetCell{r}5189.\+21  &\SetCell{r}161.\+02  \\
+\SetCell{r}&list  &\SetCell{r}4516.\+69  &\SetCell{r}2378.\+67  &\SetCell{r}259.\+93  \\
+\SetCell{r}10 000 000  &vector  &\SetCell{r}45101.\+00  &\SetCell{r}64604.\+73  &\SetCell{r}1559.\+45  \\
+\SetCell{r}&deque  &\SetCell{r}42853.\+97  &\SetCell{r}66047.\+37  &\SetCell{r}1807.\+13  \\
+\SetCell{r}&list  &\SetCell{r}45069.\+80  &\SetCell{r}30505.\+13  &\SetCell{r}2956.\+44  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysubsection{\texorpdfstring{3 strategija}{3 strategija}}\label{md__r_e_a_d_m_e_autotoc_md30}
+Tas pats kaip 2 strategija, tačiau skirstymui naudojamas {\ttfamily std::\+partition} — elementai perstumiami vietoje (in-\/place) vienu perėjimu, po to nevykeliai nukopijuojami į naują konteinerį ir ištrinami iš bendro. Skirtingai nuo 2 strategijos, kuri naudoja {\ttfamily copy\+\_\+if} ir {\ttfamily remove\+\_\+if} (du perėjimai), {\ttfamily partition} tai atlieka vienu perėjimu.
+
+
+\begin{DoxyTable}{5}{}{}{1}
+\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Studentų kiekis  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Konteineris  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Nuskaitymas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Rūšiavimas (ms)  &\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Skirstymas (ms)  \\
+\SetCell{r}1 000  &vector  &\SetCell{r}2.\+57  &\SetCell{r}0.\+53  &\SetCell{r}0.\+00  \\
+\SetCell{r}&deque  &\SetCell{r}8.\+10  &\SetCell{r}0.\+00  &\SetCell{r}0.\+00  \\
+\SetCell{r}&list  &\SetCell{r}9.\+97  &\SetCell{r}0.\+00  &\SetCell{r}0.\+00  \\
+\SetCell{r}10 000  &vector  &\SetCell{r}41.\+54  &\SetCell{r}21.\+68  &\SetCell{r}0.\+00  \\
+\SetCell{r}&deque  &\SetCell{r}43.\+23  &\SetCell{r}20.\+37  &\SetCell{r}0.\+00  \\
+\SetCell{r}&list  &\SetCell{r}45.\+32  &\SetCell{r}16.\+32  &\SetCell{r}0.\+00  \\
+\SetCell{r}100 000  &vector  &\SetCell{r}444.\+37  &\SetCell{r}280.\+55  &\SetCell{r}3.\+97  \\
+\SetCell{r}&deque  &\SetCell{r}428.\+07  &\SetCell{r}305.\+00  &\SetCell{r}3.\+35  \\
+\SetCell{r}&list  &\SetCell{r}424.\+28  &\SetCell{r}186.\+82  &\SetCell{r}8.\+17  \\
+\SetCell{r}1 000 000  &vector  &\SetCell{r}4453.\+88  &\SetCell{r}3671.\+65  &\SetCell{r}26.\+63  \\
+\SetCell{r}&deque  &\SetCell{r}4267.\+51  &\SetCell{r}4031.\+19  &\SetCell{r}65.\+79  \\
+\SetCell{r}&list  &\SetCell{r}4239.\+82  &\SetCell{r}2598.\+73  &\SetCell{r}100.\+15  \\
+\SetCell{r}10 000 000  &vector  &\SetCell{r}44772.\+97  &\SetCell{r}40601.\+10  &\SetCell{r}234.\+93  \\
+\SetCell{r}&deque  &\SetCell{r}42661.\+50  &\SetCell{r}48562.\+40  &\SetCell{r}695.\+92  \\
+\SetCell{r}&list  &\SetCell{r}42550.\+20  &\SetCell{r}33182.\+10  &\SetCell{r}1073.\+19  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxysection{\texorpdfstring{Išvados}{Išvados}}\label{md__r_e_a_d_m_e_autotoc_md32}
+Nuskaitymo ir rūšiavimo rezultatai išlieka panašūs visose trijose strategijose, kaip ir tikėtasi — skiriasi tik skirstymo dalis. Aiškiausiai tai matyti lyginant 2 ir 3 strategiją:\+ {\ttfamily partition} (3 strat.) skirstymas yra žymiai greitesnis už {\ttfamily copy\+\_\+if} + {\ttfamily remove\+\_\+if} (2 strat.), nes atlieka tik vieną perėjimą per konteinerį vietoj dviejų. Skirtumas ypač ryškus didesniuose failuose — pvz., 10M studentų su vector:\+ 2 strategija \texorpdfstring{$\sim$}{\string~}1559 ms, 3 strategija \texorpdfstring{$\sim$}{\string~}235 ms.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysection{\texorpdfstring{Dokumentacija}{Dokumentacija}}\label{md__r_e_a_d_m_e_autotoc_md34}
+Projekto dokumentacija sugeneruota naudojant {\bfseries{Doxygen}} ir prieinama {\ttfamily docs/\+} kataloge.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily docs/\+html/\+index.\+html} — naršyklėje peržiūrima HTML dokumentacija.
+\item {\ttfamily docs/\+latex/\+refman.\+pdf} — sukompiliuotas PDF.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysubsection{\texorpdfstring{Dokumentacijos generavimas}{Dokumentacijos generavimas}}\label{md__r_e_a_d_m_e_autotoc_md35}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{doxygen\ Doxyfile}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md37}{}\doxysection{\texorpdfstring{Versijų istorija}{Versijų istorija}}\label{md__r_e_a_d_m_e_autotoc_md37}
+
+\begin{DoxyTable}{2}{}{}{1}
+\SetCell{r,bg=\tableheadbgcolor,font=\bfseries}Versija  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Pakeitimai  \\
+\SetCell{r}v0.\+1  &Pradinis variantas. Duomenų įvedimas ranka, C masyvo ir {\ttfamily std::\+vector} realizacijos, galutinio balo skaičiavimas vidurkiu arba mediana, išvedimas į ekraną.  \\
+\SetCell{r}v0.\+2  &Pridėtas duomenų nuskaitymas iš failo, išvedimas į failą, rūšiavimas pagal vardą, pavardę arba galutinį balą. Projektas išskaidytas į kelis failus.  \\
+\SetCell{r}v0.\+3  &Funkcijos perkeltos į antraštinį ({\ttfamily .h}) ir realizacijos ({\ttfamily .cpp}) failus. Pridėtas klaidų gaudymas ({\ttfamily exception handling}).  \\
+\SetCell{r}v0.\+4  &Pridėtas failų generavimas, studentų skirstymas į „nevykelius"{} ir „nerdus"{}, programos spartos tyrimas su 5 skirtingo dydžio failais.  \\
+\SetCell{r}v1.\+0  &Trys atskiros realizacijos ({\ttfamily vector}, {\ttfamily list}, {\ttfamily deque}). Išbandytos 3 skirstymo strategijos. Pridėtas {\ttfamily CMake\+Lists.\+txt}.  \\
+\SetCell{r}v1.\+2  &{\ttfamily struct \doxylink{classstudentas}{studentas}} pertvarkyta į {\ttfamily class \doxylink{classstudentas}{studentas}} su {\ttfamily private} laukais, getteriais ir setteriais. Realizuoti visi Rule of Five metodai (destruktorius, kopijavimo ir perkėlimo konstruktoriai, kopijavimo ir perkėlimo priskyrimo operatoriai). Perdengiami {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} ir {\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} įvesties/\+išvesties operatoriai. Pridėti vienetų testai ({\ttfamily test.\+cpp}).  \\
+\SetCell{r}v1.\+5  &Pridėta abstrakti klasė {\ttfamily \doxylink{class_zmogus}{Zmogus}}, iš kurios išvedama klasė {\ttfamily Studentas}  \\
+\SetCell{r}v2.\+0  &Bendras {\ttfamily src/\+} kodas visiems konteineriams — konteineris pasirenkamas per {\ttfamily -\/DCONTAINER=} CMake flagą. Vienetų testai perkelti į Google Test karkasą (18 testų). Pridėta Doxygen dokumentacija (HTML + PDF).  \\
+\end{DoxyTable}

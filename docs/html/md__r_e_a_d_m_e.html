@@ -1,0 +1,469 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ObjektinisProg: ObjektinisProg</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ObjektinisProg
+   </div>
+   <div id="projectbrief">Studentu rezultatų manager</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Sugeneruota Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Paieška" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md__r_e_a_d_m_e.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">ObjektinisProg </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Naudojimosi instrukcija</h1>
+<p>Funkcijos:</p><ul>
+<li>Pasirinktinas išvestis į failą arba į terminalą.</li>
+<li>Pasirinktinas galutinio rezultato skaičiavimas, remiantis vidurkiu arba mediana.</li>
+<li>Rūšiavimas pasirinktinu būdu.</li>
+<li>Studentų skirstymas į „nevykelius" (galutinis &lt; 5) ir „nerdus" (galutinis ≥ 5).</li>
+</ul>
+<div class="fragment"><div class="line">1 parinktis - rankinis duomenų įvedimas: studento vardo, pavardės, namų darbų rezultatų, egzamino rezultato.</div>
+<div class="line">2 parinktis - pusiau rankinis įvedimas: studento vardo, pavardės įvedimas, rezultatų generavimas.</div>
+<div class="line">3 parinktis - automatinis studentų vardų, pavardžių, rezultatų generavimas, jų apdorojimas ir išvedimas.</div>
+<div class="line">4 parinktis - skaitymas iš pasirinkto failo, rūšiavimas pasirinktinu būdu, duomenų apdorojimas ir išvedimas.</div>
+<div class="line">5 parinktis - studentų failų generavimas: studentų, namų darbų kiekio pasirinkimas ir išvedimas į studentų failą.</div>
+<div class="line">6 parinktis - programos nutraukimas.</div>
+</div><!-- fragment --><p>Pasirinkus 1–4 parinktį, programa toliau klausia:</p>
+<div class="fragment"><div class="line">Rūšiavimo kriterijus  - pagal vardą, pavardę arba galutinį balą.</div>
+<div class="line">Skaičiavimo būdas     - galutinis balas skaičiuojamas vidurkiu arba mediana.</div>
+<div class="line">Išvedimo būdas        - į failą, į ekraną arba skirstymas į „nevykelių&quot; ir „nerdų&quot; failus.</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Duomenų įvestis ir išvestis</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Įvestis rankiniu būdu (1 parinktis)</h2>
+<p>Vartotojas įveda kiekvieno studento duomenis ranka. Programa prašo vardo, pavardės, namų darbų pažymių (baigiama įvedant <span class="tt">-1</span>) ir egzamino pažymio. Naudojama <span class="tt"><a class="el" href="mylib_8cpp.html#a81d8087f3257c783f8ba4479f103835b">getInt()</a></span> funkcija su validacija — neteisingi įvedimai atmetami.</p>
+<div class="fragment"><div class="line">Įrašykite studento vardą (arba -1 baigti): Jonas</div>
+<div class="line">Įrašykite studento pavardę: Jonaitis</div>
+<div class="line">Įrašykite studento nd pažymį (arba -1 baigti): 8</div>
+<div class="line">Įrašykite studento nd pažymį (arba -1 baigti): 9</div>
+<div class="line">Įrašykite studento nd pažymį (arba -1 baigti): -1</div>
+<div class="line">Įrašykite studento egzamino pažymį: 10</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Įvestis automatiniu būdu (2 ir 3 parinktis)</h2>
+<p><b>2 parinktis</b> — vartotojas įveda vardą ir pavardę, pažymiai generuojami atsitiktinai. <br  />
+ <b>3 parinktis</b> — viskas generuojama automatiškai: vardai, pavardės, pažymiai.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Įvestis iš failo (4 parinktis)</h2>
+<p>Programa nuskaito studentų duomenis iš tekstinio failo. Failo formatas:</p>
+<div class="fragment"><div class="line">Vardas              Pavarde             ND1                 ND2                 ... Egz.</div>
+<div class="line">Vardas1             Pavarde1            7                   8                   ... 9</div>
+</div><!-- fragment --><p>Kiekviena eilutė nuskaitoma per <span class="tt">operator&gt;&gt;</span>, kuris automatiškai išskiria vardą, pavardę, namų darbų pažymius ir egzaminą.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Išvestis į ekraną (2 išvedimo būdas)</h2>
+<p>Rezultatai spausdinami į terminalą per <span class="tt">operator&lt;&lt;</span>:</p>
+<div class="fragment"><div class="line">Vardas           Pavardė        Galutinis (Vid.)</div>
+<div class="line">------------------------------------------------</div>
+<div class="line">Jonas            Jonaitis       8.80</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+Išvestis į failą (1 ir 3 išvedimo būdas)</h2>
+<p><b>1 būdas</b> — visi studentai išvedami į <span class="tt">isvedimas.txt</span>. <br  />
+ <b>3 būdas</b> — studentai skirstomi: nevykeliai į <span class="tt">nevykeliai.txt</span>, nerds į <span class="tt">nerds.txt</span>.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+Perdengtų operatorių aprašas</h1>
+<p><span class="tt"><a class="el" href="classstudentas.html">studentas</a></span> klasėje perdengiami du srautų operatoriai: <span class="tt">operator&gt;&gt;</span> (įvestis) ir <span class="tt">operator&lt;&lt;</span> (išvestis). Abu deklaruojami kaip <span class="tt">friend</span> funkcijos, nes turi tiesiogiai pasiekti <span class="tt">private</span> klasės laukus.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+<span class="tt">operator&lt;&lt;</span> — išvesties operatorius</h2>
+<div class="fragment"><div class="line"><span class="keyword">friend</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, <span class="keyword">const</span> <a class="code hl_class" href="classstudentas.html">studentas</a>&amp; s);</div>
+<div class="ttc" id="aclassstudentas_html"><div class="ttname"><a href="classstudentas.html">studentas</a></div><div class="ttdef"><b>Definition</b> mylib.h:42</div></div>
+</div><!-- fragment --><p>Išveda studento vardą, pavardę ir galutinį balą suformatuotai. Grąžina <span class="tt">out</span>, kad būtų galimas grandininis išvedimas.</p>
+<p>Naudojamas <span class="tt"><a class="el" href="mylib_8cpp.html#a51a3dcd0a5d07efd6fc7b3f02fa0a82d">printRez()</a></span> funkcijoje išvedant visą studentų sąrašą:</p>
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; s : A)</div>
+<div class="line">    out &lt;&lt; s &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+</div><!-- fragment --><p>Taip pat galima naudoti tiesiogiai:</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classstudentas.html">studentas</a> s(<span class="stringliteral">&quot;Jonas&quot;</span>, <span class="stringliteral">&quot;Jonaitis&quot;</span>, {8, 9}, 10);</div>
+<div class="line">s.<a class="code hl_function" href="classstudentas.html#a94de4772d40b29a21296a944f6f57bb8">setGal</a>(8.80);</div>
+<div class="line">std::cout &lt;&lt; s;</div>
+<div class="line"><span class="comment">// Jonas             Jonaitis       8.80</span></div>
+<div class="ttc" id="aclassstudentas_html_a94de4772d40b29a21296a944f6f57bb8"><div class="ttname"><a href="classstudentas.html#a94de4772d40b29a21296a944f6f57bb8">studentas::setGal</a></div><div class="ttdeci">void setGal(double g)</div><div class="ttdef"><b>Definition</b> mylib.h:113</div></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+<span class="tt">operator&gt;&gt;</span> — įvesties operatorius</h2>
+<div class="fragment"><div class="line"><span class="keyword">friend</span> std::istream&amp; operator&gt;&gt;(std::istream&amp; in, <a class="code hl_class" href="classstudentas.html">studentas</a>&amp; s);</div>
+</div><!-- fragment --><p>Nuskaito vardą, pavardę, visus skaičius — paskutinis laikomas egzamino pažymiu, likusieji — namų darbų pažymiais. Grąžina <span class="tt">in</span> grandininiam skaitymui.</p>
+<p>Naudojamas <span class="tt"><a class="el" href="mylib_8cpp.html#a0aa3b54459502a278f12bb81a0164d5d">skaitytiIsFailo()</a></span> funkcijoje:</p>
+<div class="fragment"><div class="line">std::istringstream iss(line);</div>
+<div class="line">iss &gt;&gt; temp;</div>
+</div><!-- fragment --><p>Taip pat galima naudoti tiesiogiai su <span class="tt">std::istringstream</span>:</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classstudentas.html">studentas</a> s;</div>
+<div class="line">std::istringstream iss(<span class="stringliteral">&quot;Jonas Jonaitis 8 9 10&quot;</span>);</div>
+<div class="line">iss &gt;&gt; s;</div>
+<div class="line"><span class="comment">// s.getVardas() == &quot;Jonas&quot;, s.getEgz() == 10, paz == {8, 9}</span></div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+Kompiliavimas</h1>
+<p>Reikalavimai: CMake ≥ 3.14, MinGW (Windows) arba GCC (Linux).</p>
+<div class="fragment"><div class="line">mkdir build</div>
+<div class="line">cd build</div>
+<div class="line">cmake .. -G &quot;MinGW Makefiles&quot; -DCONTAINER=vector   # Windows</div>
+<div class="line"># cmake .. -DCONTAINER=vector                       # Linux</div>
+<div class="line">cmake --build .</div>
+</div><!-- fragment --><p>Vietoje <span class="tt">vector</span> galima nurodyti <span class="tt">list</span> arba <span class="tt">deque</span>. Numatytoji reikšmė — <span class="tt">vector</span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+Testų kompiliavimas ir paleidimas</h2>
+<div class="fragment"><div class="line">cmake .. -G &quot;MinGW Makefiles&quot; -DCONTAINER=vector -DBUILD_TESTS=ON</div>
+<div class="line">cmake --build .</div>
+<div class="line">ctest --output-on-failure</div>
+<div class="line"># arba tiesiogiai:</div>
+<div class="line">./tests</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+Klasės ir Struct Kompiliavimo flag'ų testas</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+100 000 studentų</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Optimizavimas  </th><th class="markdownTableHeadRight">Versija  </th><th class="markdownTableHeadRight">Vykdymo laikas (ms)  </th><th class="markdownTableHeadRight">Failo dydis (ms)  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">O1  </td><td class="markdownTableBodyRight">struct  </td><td class="markdownTableBodyRight">873.15  </td><td class="markdownTableBodyRight">1035  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight">class  </td><td class="markdownTableBodyRight">657.62  </td><td class="markdownTableBodyRight">1029  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">O2  </td><td class="markdownTableBodyRight">struct  </td><td class="markdownTableBodyRight">864.67  </td><td class="markdownTableBodyRight">1036  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight">class  </td><td class="markdownTableBodyRight">653.08  </td><td class="markdownTableBodyRight">1026  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">O3  </td><td class="markdownTableBodyRight">struct  </td><td class="markdownTableBodyRight">854.61  </td><td class="markdownTableBodyRight">1055  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight">class  </td><td class="markdownTableBodyRight">641.19  </td><td class="markdownTableBodyRight">1043  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+1 000 000 studentų</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Optimizavimas  </th><th class="markdownTableHeadRight">Versija  </th><th class="markdownTableHeadRight">Vykdymo laikas (ms)  </th><th class="markdownTableHeadRight">Failo dydis (ms)  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">O1  </td><td class="markdownTableBodyRight">struct  </td><td class="markdownTableBodyRight">9623.41  </td><td class="markdownTableBodyRight">1035  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight">class  </td><td class="markdownTableBodyRight">6617.74  </td><td class="markdownTableBodyRight">1029  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">O2  </td><td class="markdownTableBodyRight">struct  </td><td class="markdownTableBodyRight">9543.10  </td><td class="markdownTableBodyRight">1036  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight">class  </td><td class="markdownTableBodyRight">6474.63  </td><td class="markdownTableBodyRight">1026  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">O3  </td><td class="markdownTableBodyRight">struct  </td><td class="markdownTableBodyRight">9424.76  </td><td class="markdownTableBodyRight">1055  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyRight">class  </td><td class="markdownTableBodyRight">6518.39  </td><td class="markdownTableBodyRight">1043  </td></tr>
+</table>
+<p>Rezultatai rodo, kad class visais atvejais veikė greičiau nei struct. Didinant optimizavimo lygį (O1 → O3), vykdymo laikas mažėjo, o failo dydis didėjo.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+Vienetų testai</h1>
+<p>Vienetų testai (<span class="tt"><a class="el" href="test_2main_8cpp.html">test/main.cpp</a></span>) realizuoti naudojant <b>Google Test</b> karkasą. Testai tikrina pagrindinį <span class="tt"><a class="el" href="classstudentas.html">studentas</a></span> klasės funkcionalumą ir Rule of Five realizaciją. GTest atsisiunčiamas automatiškai per CMake <span class="tt">FetchContent</span> — rankinio diegimo nereikia.</p>
+<p>Testuojamos šios dalys:</p>
+<ul>
+<li>Numatytasis konstruktorius.</li>
+<li>Kopijavimo konstruktorius.</li>
+<li>Kopijavimo priskyrimo operatorius.</li>
+<li>Perkėlimo konstruktorius.</li>
+<li>Perkėlimo priskyrimo operatorius.</li>
+<li><span class="tt">vid()</span> ir <span class="tt">med()</span> funkcijos (įskaitant kraštinį atvejį — tuščias pažymių sąrašas).</li>
+<li>Galutinio balo skaičiavimas vidurkiu ir mediana.</li>
+<li><span class="tt"><a class="el" href="mylib_8cpp.html#a30dbc396804076b8d86c242ed4d23ace">skirstymas()</a></span> — teisingas skaidymas, visi vykeliai, visi nevykeliai, tuščias konteineris.</li>
+<li><span class="tt"><a class="el" href="mylib_8cpp.html#a51a3dcd0a5d07efd6fc7b3f02fa0a82d">printRez()</a></span> — išvesties patikrinimas per <span class="tt">std::ostringstream</span>.</li>
+</ul>
+<p>Sėkmingai praėjus testams išvedama:</p>
+<div class="fragment"><div class="line">[==========] Running 18 tests from 4 test suites.</div>
+<div class="line">[----------] 5 tests from StudentasKonstruktorius</div>
+<div class="line">[ RUN      ] StudentasKonstruktorius.Numatytasis</div>
+<div class="line">[       OK ] StudentasKonstruktorius.Numatytasis</div>
+<div class="line">...</div>
+<div class="line">[==========] 18 tests from 4 test suites ran.</div>
+<div class="line">[  PASSED  ] 18 tests.</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+Testų paskirtis</h2>
+<p>Testai skirti užtikrinti, kad:</p>
+<ul>
+<li>Rule of Five metodai veikia korektiškai.</li>
+<li>Objektų kopijavimas nesukelia bendrų duomenų problemų.</li>
+<li>Perkėlus objektą jo būsena išlieka validi.</li>
+<li>Vidurkio ir medianos skaičiavimai grąžina teisingus rezultatus.</li>
+<li><span class="tt"><a class="el" href="mylib_8cpp.html#a30dbc396804076b8d86c242ed4d23ace">skirstymas()</a></span> teisingai atskiria nevykelius visais kraštiniais atvejais.</li>
+</ul>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+Spartos tyrimas</h1>
+<p>Tyrimui naudojami prieš tai sugeneruoti failai. Bandyti visi rūšiavimo ir galutinio skaičiavimo būdai, rezultatai išreikšti vidurkiu.</p>
+<p><b>Specs:</b> AMD Ryzen 5 3600 · HyperX DDR4 16GB · SSD 970 M.2 250GB</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+1 strategija</h2>
+<p>Bendro studentai konteinerio skaidymas į du naujus to paties tipo konteinerius: „nevykeliai" ir „nerds". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Studentų kiekis  </th><th class="markdownTableHeadNone">Konteineris  </th><th class="markdownTableHeadRight">Nuskaitymas (ms)  </th><th class="markdownTableHeadRight">Rūšiavimas (ms)  </th><th class="markdownTableHeadRight">Skirstymas (ms)  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">1 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">2.53  </td><td class="markdownTableBodyRight">0.18  </td><td class="markdownTableBodyRight">0.09  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">1.74  </td><td class="markdownTableBodyRight">0.21  </td><td class="markdownTableBodyRight">0.08  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">2.07  </td><td class="markdownTableBodyRight">0.09  </td><td class="markdownTableBodyRight">0.11  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">10 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">45.12  </td><td class="markdownTableBodyRight">26.47  </td><td class="markdownTableBodyRight">0.43  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">41.61  </td><td class="markdownTableBodyRight">29.34  </td><td class="markdownTableBodyRight">0.29  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">49.38  </td><td class="markdownTableBodyRight">13.02  </td><td class="markdownTableBodyRight">0.37  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">100 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">439.84  </td><td class="markdownTableBodyRight">363.55  </td><td class="markdownTableBodyRight">16.28  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">441.07  </td><td class="markdownTableBodyRight">404.92  </td><td class="markdownTableBodyRight">15.83  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">451.29  </td><td class="markdownTableBodyRight">171.84  </td><td class="markdownTableBodyRight">24.51  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1 000 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">4397.41  </td><td class="markdownTableBodyRight">4868.73  </td><td class="markdownTableBodyRight">192.74  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">4418.56  </td><td class="markdownTableBodyRight">5341.08  </td><td class="markdownTableBodyRight">169.17  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">4454.83  </td><td class="markdownTableBodyRight">2207.16  </td><td class="markdownTableBodyRight">220.39  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">10 000 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">44284.6  </td><td class="markdownTableBodyRight">62254.37  </td><td class="markdownTableBodyRight">1880.62  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">44514.8  </td><td class="markdownTableBodyRight">69897.44  </td><td class="markdownTableBodyRight">1865.93  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">44742.3  </td><td class="markdownTableBodyRight">28843.91  </td><td class="markdownTableBodyRight">2444.18  </td></tr>
+</table>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+2 strategija</h2>
+<p>Bendro studentų konteinerio skaidymas panaudojant tik vieną naują konteinerį: „nevykeliai". Tokiu būdu, jei studentas yra nevykelis, jį turime įkelti į naująjį „nevykelių" konteinerį ir ištrinti iš bendro studentai konteinerio. Po šio žingsnio studentai konteineryje liks vien tik nerds.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Studentų kiekis  </th><th class="markdownTableHeadNone">Konteineris  </th><th class="markdownTableHeadRight">Nuskaitymas (ms)  </th><th class="markdownTableHeadRight">Rūšiavimas (ms)  </th><th class="markdownTableHeadRight">Skirstymas (ms)  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">1 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">4.67  </td><td class="markdownTableBodyRight">2.00  </td><td class="markdownTableBodyRight">0.36  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">4.32  </td><td class="markdownTableBodyRight">0.67  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">5.67  </td><td class="markdownTableBodyRight">0.99  </td><td class="markdownTableBodyRight">0.33  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">10 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">43.85  </td><td class="markdownTableBodyRight">28.67  </td><td class="markdownTableBodyRight">2.00  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">49.99  </td><td class="markdownTableBodyRight">29.15  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">45.86  </td><td class="markdownTableBodyRight">14.33  </td><td class="markdownTableBodyRight">0.99  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">100 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">427.02  </td><td class="markdownTableBodyRight">377.19  </td><td class="markdownTableBodyRight">12.96  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">435.62  </td><td class="markdownTableBodyRight">246.08  </td><td class="markdownTableBodyRight">13.86  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">450.60  </td><td class="markdownTableBodyRight">186.96  </td><td class="markdownTableBodyRight">21.33  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1 000 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">4294.58  </td><td class="markdownTableBodyRight">5088.73  </td><td class="markdownTableBodyRight">141.03  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">4357.09  </td><td class="markdownTableBodyRight">5189.21  </td><td class="markdownTableBodyRight">161.02  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">4516.69  </td><td class="markdownTableBodyRight">2378.67  </td><td class="markdownTableBodyRight">259.93  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">10 000 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">45101.00  </td><td class="markdownTableBodyRight">64604.73  </td><td class="markdownTableBodyRight">1559.45  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">42853.97  </td><td class="markdownTableBodyRight">66047.37  </td><td class="markdownTableBodyRight">1807.13  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">45069.80  </td><td class="markdownTableBodyRight">30505.13  </td><td class="markdownTableBodyRight">2956.44  </td></tr>
+</table>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+3 strategija</h2>
+<p>Tas pats kaip 2 strategija, tačiau skirstymui naudojamas <span class="tt">std::partition</span> — elementai perstumiami vietoje (in-place) vienu perėjimu, po to nevykeliai nukopijuojami į naują konteinerį ir ištrinami iš bendro. Skirtingai nuo 2 strategijos, kuri naudoja <span class="tt">copy_if</span> ir <span class="tt">remove_if</span> (du perėjimai), <span class="tt">partition</span> tai atlieka vienu perėjimu.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Studentų kiekis  </th><th class="markdownTableHeadNone">Konteineris  </th><th class="markdownTableHeadRight">Nuskaitymas (ms)  </th><th class="markdownTableHeadRight">Rūšiavimas (ms)  </th><th class="markdownTableHeadRight">Skirstymas (ms)  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">1 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">2.57  </td><td class="markdownTableBodyRight">0.53  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">8.10  </td><td class="markdownTableBodyRight">0.00  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">9.97  </td><td class="markdownTableBodyRight">0.00  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">10 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">41.54  </td><td class="markdownTableBodyRight">21.68  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">43.23  </td><td class="markdownTableBodyRight">20.37  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">45.32  </td><td class="markdownTableBodyRight">16.32  </td><td class="markdownTableBodyRight">0.00  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">100 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">444.37  </td><td class="markdownTableBodyRight">280.55  </td><td class="markdownTableBodyRight">3.97  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">428.07  </td><td class="markdownTableBodyRight">305.00  </td><td class="markdownTableBodyRight">3.35  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">424.28  </td><td class="markdownTableBodyRight">186.82  </td><td class="markdownTableBodyRight">8.17  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1 000 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">4453.88  </td><td class="markdownTableBodyRight">3671.65  </td><td class="markdownTableBodyRight">26.63  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">4267.51  </td><td class="markdownTableBodyRight">4031.19  </td><td class="markdownTableBodyRight">65.79  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">4239.82  </td><td class="markdownTableBodyRight">2598.73  </td><td class="markdownTableBodyRight">100.15  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">10 000 000  </td><td class="markdownTableBodyNone">vector  </td><td class="markdownTableBodyRight">44772.97  </td><td class="markdownTableBodyRight">40601.10  </td><td class="markdownTableBodyRight">234.93  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">deque  </td><td class="markdownTableBodyRight">42661.50  </td><td class="markdownTableBodyRight">48562.40  </td><td class="markdownTableBodyRight">695.92  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"></td><td class="markdownTableBodyNone">list  </td><td class="markdownTableBodyRight">42550.20  </td><td class="markdownTableBodyRight">33182.10  </td><td class="markdownTableBodyRight">1073.19  </td></tr>
+</table>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+Išvados</h1>
+<p>Nuskaitymo ir rūšiavimo rezultatai išlieka panašūs visose trijose strategijose, kaip ir tikėtasi — skiriasi tik skirstymo dalis. Aiškiausiai tai matyti lyginant 2 ir 3 strategiją: <span class="tt">partition</span> (3 strat.) skirstymas yra žymiai greitesnis už <span class="tt">copy_if</span> + <span class="tt">remove_if</span> (2 strat.), nes atlieka tik vieną perėjimą per konteinerį vietoj dviejų. Skirtumas ypač ryškus didesniuose failuose — pvz., 10M studentų su vector: 2 strategija ~1559 ms, 3 strategija ~235 ms.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+Dokumentacija</h1>
+<p>Projekto dokumentacija sugeneruota naudojant <b>Doxygen</b> ir prieinama <span class="tt">docs/</span> kataloge.</p>
+<ul>
+<li><span class="tt">docs/html/index.html</span> — naršyklėje peržiūrima HTML dokumentacija.</li>
+<li><span class="tt">docs/latex/refman.pdf</span> — sukompiliuotas PDF.</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+Dokumentacijos generavimas</h2>
+<div class="fragment"><div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+Versijų istorija</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Versija  </th><th class="markdownTableHeadNone">Pakeitimai  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">v0.1  </td><td class="markdownTableBodyNone">Pradinis variantas. Duomenų įvedimas ranka, C masyvo ir <span class="tt">std::vector</span> realizacijos, galutinio balo skaičiavimas vidurkiu arba mediana, išvedimas į ekraną.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">v0.2  </td><td class="markdownTableBodyNone">Pridėtas duomenų nuskaitymas iš failo, išvedimas į failą, rūšiavimas pagal vardą, pavardę arba galutinį balą. Projektas išskaidytas į kelis failus.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">v0.3  </td><td class="markdownTableBodyNone">Funkcijos perkeltos į antraštinį (<span class="tt">.h</span>) ir realizacijos (<span class="tt">.cpp</span>) failus. Pridėtas klaidų gaudymas (<span class="tt">exception handling</span>).  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">v0.4  </td><td class="markdownTableBodyNone">Pridėtas failų generavimas, studentų skirstymas į „nevykelius" ir „nerdus", programos spartos tyrimas su 5 skirtingo dydžio failais.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">v1.0  </td><td class="markdownTableBodyNone">Trys atskiros realizacijos (<span class="tt">vector</span>, <span class="tt">list</span>, <span class="tt">deque</span>). Išbandytos 3 skirstymo strategijos. Pridėtas <span class="tt">CMakeLists.txt</span>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">v1.2  </td><td class="markdownTableBodyNone"><span class="tt">struct <a class="el" href="classstudentas.html">studentas</a></span> pertvarkyta į <span class="tt">class <a class="el" href="classstudentas.html">studentas</a></span> su <span class="tt">private</span> laukais, getteriais ir setteriais. Realizuoti visi Rule of Five metodai (destruktorius, kopijavimo ir perkėlimo konstruktoriai, kopijavimo ir perkėlimo priskyrimo operatoriai). Perdengiami <span class="tt">operator&lt;&lt;</span> ir <span class="tt">operator&gt;&gt;</span> įvesties/išvesties operatoriai. Pridėti vienetų testai (<span class="tt">test.cpp</span>).  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">v1.5  </td><td class="markdownTableBodyNone">Pridėta abstrakti klasė <span class="tt"><a class="el" href="class_zmogus.html">Zmogus</a></span>, iš kurios išvedama klasė <span class="tt">Studentas</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">v2.0  </td><td class="markdownTableBodyNone">Bendras <span class="tt">src/</span> kodas visiems konteineriams — konteineris pasirenkamas per <span class="tt">-DCONTAINER=</span> CMake flagą. Vienetų testai perkelti į Google Test karkasą (18 testų). Pridėta Doxygen dokumentacija (HTML + PDF).  </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Sugeneruota <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

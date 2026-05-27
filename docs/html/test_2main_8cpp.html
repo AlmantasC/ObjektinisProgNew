@@ -1,0 +1,576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ObjektinisProg: test/main.cpp Failo Nuoroda</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ObjektinisProg
+   </div>
+   <div id="projectbrief">Studentu rezultatų manager</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Sugeneruota Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Paieška" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('test_2main_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">main.cpp Failo Nuoroda</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;gtest/gtest.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="mylib_8h_source.html">mylib.h</a>&quot;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funkcijos</h2></td></tr>
+<tr class="memitem:a3c9d150f17560f87df46c837c7e0bd6a" id="r_a3c9d150f17560f87df46c837c7e0bd6a"><td class="memItemLeft"><a class="el" href="classstudentas.html">studentas</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3c9d150f17560f87df46c837c7e0bd6a">sukurtiStudenta</a> (const std::string &amp;v, const std::string &amp;p, std::vector&lt; int &gt; pazymiai, int egz)</td></tr>
+<tr class="memitem:af7bac78aab1df00c4a3023d300feae5d" id="r_af7bac78aab1df00c4a3023d300feae5d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#af7bac78aab1df00c4a3023d300feae5d">TEST</a> (StudentasKonstruktorius, Numatytasis)</td></tr>
+<tr class="memitem:aae8d776d689612eb2170e5e5ec0d74ba" id="r_aae8d776d689612eb2170e5e5ec0d74ba"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aae8d776d689612eb2170e5e5ec0d74ba">TEST</a> (StudentasKonstruktorius, Kopijavimo)</td></tr>
+<tr class="memitem:ae062004f284f7c3d5f2207814ddf9dfd" id="r_ae062004f284f7c3d5f2207814ddf9dfd"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae062004f284f7c3d5f2207814ddf9dfd">TEST</a> (StudentasKonstruktorius, KopijavimoPreskyrimasOperatorius)</td></tr>
+<tr class="memitem:a73d47c9d3e1a16d3cca71c6c347b4d74" id="r_a73d47c9d3e1a16d3cca71c6c347b4d74"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a73d47c9d3e1a16d3cca71c6c347b4d74">TEST</a> (StudentasKonstruktorius, Perkelimo)</td></tr>
+<tr class="memitem:ab5076f56bfcf30a5afda5fbcd4199c54" id="r_ab5076f56bfcf30a5afda5fbcd4199c54"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ab5076f56bfcf30a5afda5fbcd4199c54">TEST</a> (StudentasKonstruktorius, PerkelimoPreskyrimasOperatorius)</td></tr>
+<tr class="memitem:aa23dddc7aafaff270532eb64a99bae81" id="r_aa23dddc7aafaff270532eb64a99bae81"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa23dddc7aafaff270532eb64a99bae81">TEST</a> (Skaiciavimai, VidurklisVienas)</td></tr>
+<tr class="memitem:a467009135a0261f7a9dea60b3702bcd5" id="r_a467009135a0261f7a9dea60b3702bcd5"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a467009135a0261f7a9dea60b3702bcd5">TEST</a> (Skaiciavimai, VidurklisKeli)</td></tr>
+<tr class="memitem:a1261636644092455356b0b0f522b81ec" id="r_a1261636644092455356b0b0f522b81ec"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a1261636644092455356b0b0f522b81ec">TEST</a> (Skaiciavimai, VidurklisOhnePazymiu)</td></tr>
+<tr class="memitem:a9e075e45258350ad2f52f526330ff55c" id="r_a9e075e45258350ad2f52f526330ff55c"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a9e075e45258350ad2f52f526330ff55c">TEST</a> (Skaiciavimai, MedianaNelyginisSkacius)</td></tr>
+<tr class="memitem:a258090c291e2f4875d64c961cd276e48" id="r_a258090c291e2f4875d64c961cd276e48"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a258090c291e2f4875d64c961cd276e48">TEST</a> (Skaiciavimai, MedianaLyginisSkacius)</td></tr>
+<tr class="memitem:a0908bf4bd4ba9ace2fc05823a8c7cfde" id="r_a0908bf4bd4ba9ace2fc05823a8c7cfde"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a0908bf4bd4ba9ace2fc05823a8c7cfde">TEST</a> (Skaiciavimai, MedianaOhnePazymiu)</td></tr>
+<tr class="memitem:aa6c8047d1fc4eee572b48ac53c9ace97" id="r_aa6c8047d1fc4eee572b48ac53c9ace97"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa6c8047d1fc4eee572b48ac53c9ace97">TEST</a> (Skaiciavimai, GalutinisVidurkiu)</td></tr>
+<tr class="memitem:a217f6ea0cb12d839f4c1524c704a7cd3" id="r_a217f6ea0cb12d839f4c1524c704a7cd3"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a217f6ea0cb12d839f4c1524c704a7cd3">TEST</a> (Skaiciavimai, GalutinisMediana)</td></tr>
+<tr class="memitem:a579af63fb352281c93d295bb6430fda3" id="r_a579af63fb352281c93d295bb6430fda3"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a579af63fb352281c93d295bb6430fda3">TEST</a> (Skirstymas, NevykeliaiAtskiriami)</td></tr>
+<tr class="memitem:abab468539c6326a376290899e8aea753" id="r_abab468539c6326a376290899e8aea753"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#abab468539c6326a376290899e8aea753">TEST</a> (Skirstymas, VisiVykeliai)</td></tr>
+<tr class="memitem:a4fb79a6f7e36e84ed13ea51b2039b363" id="r_a4fb79a6f7e36e84ed13ea51b2039b363"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a4fb79a6f7e36e84ed13ea51b2039b363">TEST</a> (Skirstymas, VisiNevykeliai)</td></tr>
+<tr class="memitem:a2ba0ca43a2d7bbc96146bf891ece3a13" id="r_a2ba0ca43a2d7bbc96146bf891ece3a13"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a2ba0ca43a2d7bbc96146bf891ece3a13">TEST</a> (Skirstymas, TustiKonteineriaiNesugriuna)</td></tr>
+<tr class="memitem:ae5d79ecdd59d5be58816d9124bac3b39" id="r_ae5d79ecdd59d5be58816d9124bac3b39"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae5d79ecdd59d5be58816d9124bac3b39">TEST</a> (Isvedimas, PrintRezIsvedasTeisingai)</td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funkcijos Dokumentacija</h2>
+<a id="a3c9d150f17560f87df46c837c7e0bd6a" name="a3c9d150f17560f87df46c837c7e0bd6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c9d150f17560f87df46c837c7e0bd6a">&#9670;&#160;</a></span>sukurtiStudenta()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classstudentas.html">studentas</a> sukurtiStudenta </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>pazymiai</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>egz</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5d79ecdd59d5be58816d9124bac3b39" name="ae5d79ecdd59d5be58816d9124bac3b39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d79ecdd59d5be58816d9124bac3b39">&#9670;&#160;</a></span>TEST() <span class="overload">[1/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Isvedimas</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PrintRezIsvedasTeisingai</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a217f6ea0cb12d839f4c1524c704a7cd3" name="a217f6ea0cb12d839f4c1524c704a7cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217f6ea0cb12d839f4c1524c704a7cd3">&#9670;&#160;</a></span>TEST() <span class="overload">[2/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GalutinisMediana</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6c8047d1fc4eee572b48ac53c9ace97" name="aa6c8047d1fc4eee572b48ac53c9ace97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c8047d1fc4eee572b48ac53c9ace97">&#9670;&#160;</a></span>TEST() <span class="overload">[3/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GalutinisVidurkiu</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a258090c291e2f4875d64c961cd276e48" name="a258090c291e2f4875d64c961cd276e48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a258090c291e2f4875d64c961cd276e48">&#9670;&#160;</a></span>TEST() <span class="overload">[4/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MedianaLyginisSkacius</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e075e45258350ad2f52f526330ff55c" name="a9e075e45258350ad2f52f526330ff55c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e075e45258350ad2f52f526330ff55c">&#9670;&#160;</a></span>TEST() <span class="overload">[5/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MedianaNelyginisSkacius</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0908bf4bd4ba9ace2fc05823a8c7cfde" name="a0908bf4bd4ba9ace2fc05823a8c7cfde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0908bf4bd4ba9ace2fc05823a8c7cfde">&#9670;&#160;</a></span>TEST() <span class="overload">[6/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MedianaOhnePazymiu</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a467009135a0261f7a9dea60b3702bcd5" name="a467009135a0261f7a9dea60b3702bcd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a467009135a0261f7a9dea60b3702bcd5">&#9670;&#160;</a></span>TEST() <span class="overload">[7/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VidurklisKeli</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1261636644092455356b0b0f522b81ec" name="a1261636644092455356b0b0f522b81ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1261636644092455356b0b0f522b81ec">&#9670;&#160;</a></span>TEST() <span class="overload">[8/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VidurklisOhnePazymiu</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa23dddc7aafaff270532eb64a99bae81" name="aa23dddc7aafaff270532eb64a99bae81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa23dddc7aafaff270532eb64a99bae81">&#9670;&#160;</a></span>TEST() <span class="overload">[9/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skaiciavimai</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VidurklisVienas</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a579af63fb352281c93d295bb6430fda3" name="a579af63fb352281c93d295bb6430fda3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a579af63fb352281c93d295bb6430fda3">&#9670;&#160;</a></span>TEST() <span class="overload">[10/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skirstymas</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NevykeliaiAtskiriami</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ba0ca43a2d7bbc96146bf891ece3a13" name="a2ba0ca43a2d7bbc96146bf891ece3a13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ba0ca43a2d7bbc96146bf891ece3a13">&#9670;&#160;</a></span>TEST() <span class="overload">[11/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skirstymas</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TustiKonteineriaiNesugriuna</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fb79a6f7e36e84ed13ea51b2039b363" name="a4fb79a6f7e36e84ed13ea51b2039b363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb79a6f7e36e84ed13ea51b2039b363">&#9670;&#160;</a></span>TEST() <span class="overload">[12/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skirstymas</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VisiNevykeliai</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abab468539c6326a376290899e8aea753" name="abab468539c6326a376290899e8aea753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab468539c6326a376290899e8aea753">&#9670;&#160;</a></span>TEST() <span class="overload">[13/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Skirstymas</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VisiVykeliai</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae8d776d689612eb2170e5e5ec0d74ba" name="aae8d776d689612eb2170e5e5ec0d74ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae8d776d689612eb2170e5e5ec0d74ba">&#9670;&#160;</a></span>TEST() <span class="overload">[14/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">StudentasKonstruktorius</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Kopijavimo</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae062004f284f7c3d5f2207814ddf9dfd" name="ae062004f284f7c3d5f2207814ddf9dfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae062004f284f7c3d5f2207814ddf9dfd">&#9670;&#160;</a></span>TEST() <span class="overload">[15/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">StudentasKonstruktorius</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">KopijavimoPreskyrimasOperatorius</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7bac78aab1df00c4a3023d300feae5d" name="af7bac78aab1df00c4a3023d300feae5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7bac78aab1df00c4a3023d300feae5d">&#9670;&#160;</a></span>TEST() <span class="overload">[16/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">StudentasKonstruktorius</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Numatytasis</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73d47c9d3e1a16d3cca71c6c347b4d74" name="a73d47c9d3e1a16d3cca71c6c347b4d74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73d47c9d3e1a16d3cca71c6c347b4d74">&#9670;&#160;</a></span>TEST() <span class="overload">[17/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">StudentasKonstruktorius</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Perkelimo</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5076f56bfcf30a5afda5fbcd4199c54" name="ab5076f56bfcf30a5afda5fbcd4199c54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5076f56bfcf30a5afda5fbcd4199c54">&#9670;&#160;</a></span>TEST() <span class="overload">[18/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">StudentasKonstruktorius</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PerkelimoPreskyrimasOperatorius</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a href="test_2main_8cpp.html">main.cpp</a></li>
+    <li class="footer">Sugeneruota <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>
