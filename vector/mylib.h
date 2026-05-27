@@ -5,6 +5,31 @@
 #include <algorithm>
 #include <iomanip>
 
+class Zmogus {
+protected:
+    std::string vardas;
+    std::string pavarde;
+
+public:
+    // Konstruktoriai
+    Zmogus() : vardas(""), pavarde("") {}
+    Zmogus(const std::string& v, const std::string& p) : vardas(v), pavarde(p) {}
+
+    virtual ~Zmogus() {}
+
+    virtual std::string getVardas()  const = 0;
+    virtual std::string getPavarde() const = 0;
+    virtual void setVardas(const std::string& v) = 0;
+    virtual void setPavarde(const std::string& p) = 0;
+
+    virtual void print(std::ostream& out) const = 0;
+
+    friend std::ostream& operator<<(std::ostream& out, const Zmogus& z) {
+        z.print(out);
+        return out;
+    }
+};
+
 class studentas {
 private:
     std::string vardas, pavarde;
