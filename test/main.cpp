@@ -1,174 +1,220 @@
+#include <gtest/gtest.h>
 #include "mylib.h"
-#include <iostream>
 #include <sstream>
-#include <cassert>
-#include <windows.h>
-void pass(const std::string& name) {
-    std::cout << "[OK] " << name << "\n";
-}
 
-// --- Destruktorius ---
-
-void test_destruktorius() {
-    studentas* s = new studentas("Jonas", "Jonaitis", {8, 9}, 10);
-    delete s; // jei sugriauna — destruktorius sulaužytas
-    s = nullptr;
-    assert(s == nullptr);
-    pass("Destruktorius");
-}
-
-// --- Konstruktoriai ---
-
-void test_numatytasis() {
+// ============================================================
+//  Pagalbinė funkcija: sukuria studentą su pažymiais
+// ============================================================
+studentas sukurtiStudenta(const std::string& v, const std::string& p,
+                          std::vector<int> pazymiai, int egz) {
     studentas s;
-    assert(s.getVardas()  == "");
-    assert(s.getPavarde() == "");
-    assert(s.getEgz()     == 0);
-    assert(s.getGal()     == 0.0);
-    assert(s.getPaz().empty());
-    pass("Numatytasis konstruktorius");
+    s.setVardas(v);
+    s.setPavarde(p);
+    for (int x : pazymiai) s.addPaz(x);
+    s.setEgz(egz);
+    return s;
 }
 
-void test_parametrinis() {
-    studentas s("Jonas", "Jonaitis", {8, 9, 7}, 10);
-    assert(s.getVardas()  == "Jonas");
-    assert(s.getPavarde() == "Jonaitis");
-    assert(s.getEgz()     == 10);
-    assert(s.getPaz().size() == 3);
-    pass("Parametrinis konstruktorius");
+// ============================================================
+//  1. Numatytasis konstruktorius
+// ============================================================
+TEST(StudentasKonstruktorius, Numatytasis) {
+    studentas s;
+    EXPECT_EQ(s.getVardas(),  "");
+    EXPECT_EQ(s.getPavarde(), "");
+    EXPECT_EQ(s.getEgz(),     0);
+    EXPECT_DOUBLE_EQ(s.getGal(), 0.0);
+    EXPECT_TRUE(s.getPaz().empty());
 }
 
-// --- Rule of Five ---
-
-void test_kopijavimo_konstruktorius() {
-    studentas a("Jonas", "Jonaitis", {8, 9}, 10);
+// ============================================================
+//  2. Kopijavimo konstruktorius
+// ============================================================
+TEST(StudentasKonstruktorius, Kopijavimo) {
+    studentas a = sukurtiStudenta("Jonas", "Jonaitis", {6, 8, 10}, 7);
     studentas b(a);
-    assert(b.getVardas() == "Jonas");
-    assert(b.getPaz().size() == 2);
-    // Nepriklausomumas — keičiam b, a nesikeičia
+
+    EXPECT_EQ(b.getVardas(),  a.getVardas());
+    EXPECT_EQ(b.getPavarde(), a.getPavarde());
+    EXPECT_EQ(b.getEgz(),     a.getEgz());
+    EXPECT_EQ(b.getPaz(),     a.getPaz());
+
+    // Nepriklausomumas — b keitimas neturi įtakos a
     b.setVardas("Petras");
-    b.addPaz(5);
-    assert(a.getVardas()     == "Jonas");
-    assert(a.getPaz().size() == 2);
-    pass("Kopijavimo konstruktorius");
+    EXPECT_EQ(a.getVardas(), "Jonas");
 }
 
-void test_kopijavimo_priskyrimas() {
-    studentas a("Jonas", "Jonaitis", {8, 9}, 10);
+// ============================================================
+//  3. Kopijavimo priskyrimo operatorius
+// ============================================================
+TEST(StudentasKonstruktorius, KopijavimoPreskyrimasOperatorius) {
+    studentas a = sukurtiStudenta("Jonas", "Jonaitis", {6, 8}, 9);
     studentas b;
     b = a;
-    assert(b.getVardas() == "Jonas");
-    // Savipriskyrimas neturi sulaužyti
+
+    EXPECT_EQ(b.getVardas(),  "Jonas");
+    EXPECT_EQ(b.getPavarde(), "Jonaitis");
+    EXPECT_EQ(b.getEgz(),     9);
+    EXPECT_EQ(b.getPaz(),     a.getPaz());
+
+    // Savipriskyrimas neturi sugadinti
     b = b;
-    assert(b.getVardas() == "Jonas");
-    pass("Kopijavimo priskyrimo operatorius");
+    EXPECT_EQ(b.getVardas(), "Jonas");
 }
 
-void test_perkelimo_konstruktorius() {
-    studentas a("Jonas", "Jonaitis", {8, 9}, 10);
+// ============================================================
+//  4. Perkėlimo konstruktorius
+// ============================================================
+TEST(StudentasKonstruktorius, Perkelimo) {
+    studentas a = sukurtiStudenta("Jonas", "Jonaitis", {5, 7, 9}, 8);
     studentas b(std::move(a));
-    assert(b.getVardas()  == "Jonas");
-    assert(b.getEgz()     == 10);
-    assert(b.getPaz().size() == 2);
-    // a turi būti tuščias
-    assert(a.getVardas()  == "");
-    assert(a.getEgz()     == 0);
-    assert(a.getPaz().empty());
-    pass("Perkėlimo konstruktorius");
+
+    EXPECT_EQ(b.getVardas(),  "Jonas");
+    EXPECT_EQ(b.getPavarde(), "Jonaitis");
+    EXPECT_EQ(b.getEgz(),     8);
+    EXPECT_EQ(b.getPaz().size(), 3u);
+
+    // a turi būti tuščias po perkėlimo
+    EXPECT_EQ(a.getVardas(),  "");
+    EXPECT_EQ(a.getPavarde(), "");
+    EXPECT_EQ(a.getEgz(),     0);
 }
 
-void test_perkelimo_priskyrimas() {
-    studentas a("Jonas", "Jonaitis", {8, 9}, 10);
+// ============================================================
+//  5. Perkėlimo priskyrimo operatorius
+// ============================================================
+TEST(StudentasKonstruktorius, PerkelimoPreskyrimasOperatorius) {
+    studentas a = sukurtiStudenta("Jonas", "Jonaitis", {4, 6, 8}, 7);
     studentas b;
     b = std::move(a);
-    assert(b.getVardas()  == "Jonas");
-    assert(b.getEgz()     == 10);
-    assert(a.getVardas()  == "");
-    assert(a.getEgz()     == 0);
-    // Savipriskyrimas
-    b = std::move(b);
-    assert(b.getVardas()  == "Jonas");
-    pass("Perkėlimo priskyrimo operatorius");
+
+    EXPECT_EQ(b.getVardas(),  "Jonas");
+    EXPECT_EQ(b.getPavarde(), "Jonaitis");
+    EXPECT_EQ(b.getEgz(),     7);
+    EXPECT_EQ(b.getPaz().size(), 3u);
+
+    EXPECT_EQ(a.getVardas(),  "");
+    EXPECT_EQ(a.getPavarde(), "");
+    EXPECT_EQ(a.getEgz(),     0);
 }
 
-// --- Operatoriai ---
-
-void test_isvesties_operatorius() {
-    studentas s("Jonas", "Jonaitis", {8, 9}, 10);
-    s.setGal(8.40);
-    std::ostringstream oss;
-    oss << s;
-    // Tikrinam kad yra vardas, pavardė ir galutinis
-    assert(oss.str().find("Jonas")    != std::string::npos);
-    assert(oss.str().find("Jonaitis") != std::string::npos);
-    assert(oss.str().find("8.40")     != std::string::npos);
-    pass("Išvesties operatorius <<");
-}
-
-void test_ivesties_operatorius() {
+// ============================================================
+//  Vidurkis
+// ============================================================
+TEST(Skaiciavimai, VidurklisVienas) {
     studentas s;
-    std::istringstream iss("Jonas Jonaitis 8 9 10");
-    iss >> s;
-    assert(s.getVardas()     == "Jonas");
-    assert(s.getPavarde()    == "Jonaitis");
-    assert(s.getEgz()        == 10);
-    assert(s.getPaz().size() == 2);
-    assert(s.getPaz()[0]     == 8);
-    assert(s.getPaz()[1]     == 9);
-    pass("Įvesties operatorius >>");
+    s.addPaz(8);
+    EXPECT_DOUBLE_EQ(s.vid(), 8.0);
 }
 
-void test_roundtrip() {
-    // >> nuskaito, << išveda — tikrinam kad duomenys išlieka
-    studentas a;
-    std::istringstream iss("Petras Petraitis 7 8 9 6");
-    iss >> a;
-    a.setGal(0.4*a.vid() + 0.6*a.getEgz());
+TEST(Skaiciavimai, VidurklisKeli) {
+    studentas s;
+    s.addPaz(6); s.addPaz(8); s.addPaz(10);
+    EXPECT_DOUBLE_EQ(s.vid(), 8.0);
+}
+
+TEST(Skaiciavimai, VidurklisOhnePazymiu) {
+    studentas s;
+    EXPECT_DOUBLE_EQ(s.vid(), 0.0);
+}
+
+// ============================================================
+//  Mediana
+// ============================================================
+TEST(Skaiciavimai, MedianaNelyginisSkacius) {
+    studentas s;
+    s.addPaz(4); s.addPaz(10); s.addPaz(6);
+    EXPECT_DOUBLE_EQ(s.med(), 6.0);
+}
+
+TEST(Skaiciavimai, MedianaLyginisSkacius) {
+    studentas s;
+    s.addPaz(4); s.addPaz(6);
+    EXPECT_DOUBLE_EQ(s.med(), 5.0);
+}
+
+TEST(Skaiciavimai, MedianaOhnePazymiu) {
+    studentas s;
+    EXPECT_DOUBLE_EQ(s.med(), 0.0);
+}
+
+// ============================================================
+//  Galutinis balas
+// ============================================================
+TEST(Skaiciavimai, GalutinisVidurkiu) {
+    studentas s;
+    s.addPaz(10); s.addPaz(10);
+    s.setEgz(10);
+    s.setGal(0.4 * s.vid() + 0.6 * s.getEgz());
+    EXPECT_DOUBLE_EQ(s.getGal(), 10.0);
+}
+
+TEST(Skaiciavimai, GalutinisMediana) {
+    studentas s;
+    s.addPaz(6); s.addPaz(8); s.addPaz(10);
+    s.setEgz(6);
+    s.setGal(0.4 * s.med() + 0.6 * s.getEgz());
+    EXPECT_DOUBLE_EQ(s.getGal(), 0.4*8.0 + 0.6*6.0);
+}
+
+// ============================================================
+//  Skirstymas
+// ============================================================
+TEST(Skirstymas, NevykeliaiAtskiriami) {
+    Studentai<studentas> visi, nevykeliai;
+    for (int g : {3, 7, 2, 8, 4, 9}) {
+        studentas s;
+        s.setGal(g);
+        visi.push_back(s);
+    }
+    skirstymas(visi, nevykeliai);
+
+    for (const auto& s : visi)
+        EXPECT_GE(s.getGal(), 5.0);
+    for (const auto& s : nevykeliai)
+        EXPECT_LT(s.getGal(), 5.0);
+}
+
+TEST(Skirstymas, VisiVykeliai) {
+    Studentai<studentas> visi, nevykeliai;
+    for (int g : {5, 7, 9}) {
+        studentas s; s.setGal(g); visi.push_back(s);
+    }
+    skirstymas(visi, nevykeliai);
+    EXPECT_TRUE(nevykeliai.empty());
+    EXPECT_EQ(visi.size(), 3u);
+}
+
+TEST(Skirstymas, VisiNevykeliai) {
+    Studentai<studentas> visi, nevykeliai;
+    for (int g : {1, 2, 3, 4}) {
+        studentas s; s.setGal(g); visi.push_back(s);
+    }
+    skirstymas(visi, nevykeliai);
+    EXPECT_TRUE(visi.empty());
+    EXPECT_EQ(nevykeliai.size(), 4u);
+}
+
+TEST(Skirstymas, TustiKonteineriaiNesugriuna) {
+    Studentai<studentas> visi, nevykeliai;
+    EXPECT_NO_THROW(skirstymas(visi, nevykeliai));
+    EXPECT_TRUE(visi.empty());
+    EXPECT_TRUE(nevykeliai.empty());
+}
+
+// ============================================================
+//  Išvedimas
+// ============================================================
+TEST(Isvedimas, PrintRezIsvedasTeisingai) {
+    Studentai<studentas> A;
+    studentas s = sukurtiStudenta("Jonas", "Jonaitis", {8}, 9);
+    s.setGal(0.4*8.0 + 0.6*9.0);
+    A.push_back(s);
 
     std::ostringstream oss;
-    oss << a;
-    assert(oss.str().find("Petras")    != std::string::npos);
-    assert(oss.str().find("Petraitis") != std::string::npos);
-    pass(">> / << round-trip");
-}
+    printRez(oss, A, 1);
+    std::string out = oss.str();
 
-// --- Skaičiavimai ---
-
-void test_vid() {
-    studentas s("", "", {6, 8, 10}, 0);
-    assert(s.vid() == 8.0);
-    pass("vid()");
-}
-
-void test_med_nelyginis() {
-    studentas s("", "", {6, 8, 10}, 0);
-    assert(s.med() == 8.0);
-    pass("med() nelyginis");
-}
-
-void test_med_lyginis() {
-    studentas s("", "", {6, 8}, 0);
-    assert(s.med() == 7.0);
-    pass("med() lyginis");
-}
-
-int main() {
-    SetConsoleOutputCP(65001);
-    SetConsoleCP(65001);
-    test_destruktorius();
-    test_numatytasis();
-    test_parametrinis();
-    test_kopijavimo_konstruktorius();
-    test_kopijavimo_priskyrimas();
-    test_perkelimo_konstruktorius();
-    test_perkelimo_priskyrimas();
-    test_isvesties_operatorius();
-    test_ivesties_operatorius();
-    test_roundtrip();
-    test_vid();
-    test_med_nelyginis();
-    test_med_lyginis();
-
-    std::cout << "\nVisi testai praejo.\n";
-    return 0;
+    EXPECT_NE(out.find("Jonas"),    std::string::npos);
+    EXPECT_NE(out.find("Jonaitis"), std::string::npos);
 }
