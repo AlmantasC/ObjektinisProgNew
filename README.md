@@ -188,14 +188,6 @@ Testuojamos šios dalys:
 * Objektų nepriklausomumas po kopijavimo.
 * Korektiška būsena po perkėlimo (`move semantics`).
 
-### Testų paleidimas
-
-Sukompiliavus projektą galima paleisti testus:
-
-```bash
-./test
-```
-
 Sėkmingai praėjus testams išvedama:
 
 ```text
