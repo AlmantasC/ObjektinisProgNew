@@ -2,7 +2,6 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
-#include <deque>
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
@@ -14,15 +13,13 @@ using std::cin;
 using std::string;
 using std::cout;
 using std::setw;
-using std::deque;
-using std::sort;
 namespace chr = std::chrono;
 
 int main(){
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
     std::srand(std::time(0));
-    deque<studentas> A;
+    Studentai<studentas> A;
     int m=0;
     auto ms = [](auto d){
         return chr::duration<double, std::milli>(d).count();
@@ -70,7 +67,7 @@ int main(){
     }
 
     // --------- SKIRSTYMAS ---------
-    deque<studentas> nevykeliai;
+    Studentai<studentas> nevykeliai;
     if (isvedimas==3) {
         auto tSkirstymasStart = chr::high_resolution_clock::now();
         skirstymas(A, nevykeliai);
@@ -81,9 +78,9 @@ int main(){
     // --------- RUSIAVIMAS ---------
     auto tRusiavimasStart = chr::high_resolution_clock::now();
     switch (rusiavimas) {
-        case 1: sort(A.begin(), A.end(), pagalVard); if (isvedimas==3) sort(nevykeliai.begin(), nevykeliai.end(), pagalVard); break;
-        case 2: sort(A.begin(), A.end(), pagalPavard); if (isvedimas==3) sort(nevykeliai.begin(), nevykeliai.end(), pagalPavard); break;
-        case 3: sort(A.begin(), A.end(), pagalGal); if (isvedimas==3) sort(nevykeliai.begin(), nevykeliai.end(), pagalGal); break;
+        case 1: rusiuoti(A, pagalVard);   if (isvedimas==3) rusiuoti(nevykeliai, pagalVard);   break;
+        case 2: rusiuoti(A, pagalPavard); if (isvedimas==3) rusiuoti(nevykeliai, pagalPavard); break;
+        case 3: rusiuoti(A, pagalGal);    if (isvedimas==3) rusiuoti(nevykeliai, pagalGal);    break;
     }
     auto tRusiavimasEnd = chr::high_resolution_clock::now();
     cout<<"\nRūšiavimas:        "<< ms(tRusiavimasEnd-tRusiavimasStart) <<" ms";

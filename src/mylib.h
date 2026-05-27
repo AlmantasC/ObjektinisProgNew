@@ -1,10 +1,19 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <list>
 #include <deque>
 #include <fstream>
 #include <algorithm>
 #include <iomanip>
+
+#if defined(USE_LIST)
+    template<typename T> using Studentai = std::list<T>;
+#elif defined(USE_DEQUE)
+    template<typename T> using Studentai = std::deque<T>;
+#else
+    template<typename T> using Studentai = std::vector<T>;
+#endif
 
 class Zmogus {
 protected:
@@ -12,7 +21,6 @@ protected:
     std::string pavarde;
 
 public:
-    // Konstruktoriai
     Zmogus() : vardas(""), pavarde("") {}
     Zmogus(const std::string& v, const std::string& p) : vardas(v), pavarde(p) {}
 
@@ -39,24 +47,19 @@ private:
     double gal;
 
 public:
-    // 1. Numatytasis konstruktorius
     studentas()
         : Zmogus(), egz(0), rez(0.0), gal(0.0) {}
 
-    // Parametrinis konstruktorius
     studentas(const std::string& v, const std::string& p,
               const std::vector<int>& pazymiai, int e)
         : Zmogus(v, p), paz(pazymiai), egz(e), rez(0.0), gal(0.0) {}
 
-    // 2. Destruktorius
     ~studentas() override {}
 
-    // 3. Kopijavimo konstruktorius
     studentas(const studentas& other)
         : Zmogus(other.vardas, other.pavarde),
           paz(other.paz), egz(other.egz), rez(other.rez), gal(other.gal) {}
 
-    // 4. Kopijavimo priskyrimo operatorius
     studentas& operator=(const studentas& other) {
         if (this == &other) return *this;
         vardas  = other.vardas;
@@ -68,7 +71,6 @@ public:
         return *this;
     }
 
-    // 5. Perkėlimo konstruktorius
     studentas(studentas&& other) noexcept
         : Zmogus(std::move(other.vardas), std::move(other.pavarde)),
           paz(std::move(other.paz)), egz(other.egz), rez(other.rez), gal(other.gal) {
@@ -76,7 +78,6 @@ public:
         other.egz = 0; other.rez = 0.0; other.gal = 0.0;
     }
 
-    // 6. Perkėlimo priskyrimo operatorius
     studentas& operator=(studentas&& other) noexcept {
         if (this == &other) return *this;
         vardas  = std::move(other.vardas);
@@ -88,7 +89,6 @@ public:
         return *this;
     }
 
-    // --- Grynai virtualių metodų realizacija ---
     std::string getVardas()  const override { return vardas; }
     std::string getPavarde() const override { return pavarde; }
     void setVardas(const std::string& v) override { vardas = v; }
@@ -100,13 +100,11 @@ public:
             << '\t' << std::fixed << std::setprecision(2) << gal;
     }
 
-    // Getteriai
     std::vector<int> getPaz() const { return paz; }
     int    getEgz() const { return egz; }
     double getRez() const { return rez; }
     double getGal() const { return gal; }
 
-    // Setteriai
     void setPaz(const std::vector<int>& p) { paz = p; }
     void addPaz(int p)                     { paz.push_back(p); }
     void clearPaz()                        { paz.clear(); }
@@ -114,13 +112,11 @@ public:
     void setRez(double r)                  { rez = r; }
     void setGal(double g)                  { gal = g; }
 
-    // Išvesties operatorius (perdengia bazinį << per friend)
     friend std::ostream& operator<<(std::ostream& out, const studentas& s) {
         s.print(out);
         return out;
     }
 
-    // Įvesties operatorius
     friend std::istream& operator>>(std::istream& in, studentas& s) {
         s.paz.clear();
         in >> s.vardas >> s.pavarde;
@@ -131,7 +127,6 @@ public:
         return in;
     }
 
-    // Skaičiavimai
     double vid() const {
         if (paz.empty()) return 0.0;
         double suma = 0;
@@ -149,16 +144,25 @@ public:
     }
 };
 
+template<typename Container, typename Comp>
+void rusiuoti(Container& c, Comp comp) {
+#if defined(USE_LIST)
+    c.sort(comp);
+#else
+    std::sort(c.begin(), c.end(), comp);
+#endif
+}
+
 std::string randomstr();
 bool pagalVard(const studentas& a, const studentas& b);
 bool pagalPavard(const studentas& a, const studentas& b);
 bool pagalGal(const studentas& a, const studentas& b);
 int getInt(int min, int max);
 std::string getFile();
-void printRez(std::ostream& out, std::deque<studentas>& A, int skaiciavimas);
-void ivestiRanka(std::deque<studentas>& A, int& m);
-void generuotiPazymius(std::deque<studentas>& A, int& m);
-void generuotiViska(std::deque<studentas>& A, int& m);
-void skaitytiIsFailo(std::deque<studentas>& A, int& m, std::string& failas);
+void printRez(std::ostream& out, Studentai<studentas>& A, int skaiciavimas);
+void ivestiRanka(Studentai<studentas>& A, int& m);
+void generuotiPazymius(Studentai<studentas>& A, int& m);
+void generuotiViska(Studentai<studentas>& A, int& m);
+void skaitytiIsFailo(Studentai<studentas>& A, int& m, std::string& failas);
 void generuotiFaila();
-void skirstymas(std::deque<studentas>& studentai, std::deque<studentas>& nevykeliai);
+void skirstymas(Studentai<studentas>& studentai, Studentai<studentas>& nevykeliai);
