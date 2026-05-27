@@ -6,32 +6,57 @@
 #include <algorithm>
 #include <iomanip>
 
-class studentas {
+class Zmogus {
+protected:
+    std::string vardas;
+    std::string pavarde;
+
+public:
+    // Konstruktoriai
+    Zmogus() : vardas(""), pavarde("") {}
+    Zmogus(const std::string& v, const std::string& p) : vardas(v), pavarde(p) {}
+
+    virtual ~Zmogus() {}
+
+    virtual std::string getVardas()  const = 0;
+    virtual std::string getPavarde() const = 0;
+    virtual void setVardas(const std::string& v) = 0;
+    virtual void setPavarde(const std::string& p) = 0;
+
+    virtual void print(std::ostream& out) const = 0;
+
+    friend std::ostream& operator<<(std::ostream& out, const Zmogus& z) {
+        z.print(out);
+        return out;
+    }
+};
+
+class studentas : public Zmogus {
 private:
-    std::string vardas, pavarde;
     std::vector<int> paz;
     int egz;
     double rez;
     double gal;
 
 public:
-    // Konstruktoriai
+    // 1. Numatytasis konstruktorius
     studentas()
-        : vardas(""), pavarde(""), egz(0), rez(0.0), gal(0.0) {}
+        : Zmogus(), egz(0), rez(0.0), gal(0.0) {}
 
+    // Parametrinis konstruktorius
     studentas(const std::string& v, const std::string& p,
               const std::vector<int>& pazymiai, int e)
-        : vardas(v), pavarde(p), paz(pazymiai), egz(e), rez(0.0), gal(0.0) {}
+        : Zmogus(v, p), paz(pazymiai), egz(e), rez(0.0), gal(0.0) {}
 
-    // 1. Destruktorius
-    ~studentas() {}
+    // 2. Destruktorius
+    ~studentas() override {}
 
-    // 2. Kopijavimo konstruktorius
+    // 3. Kopijavimo konstruktorius
     studentas(const studentas& other)
-        : vardas(other.vardas), pavarde(other.pavarde), paz(other.paz),
-          egz(other.egz), rez(other.rez), gal(other.gal) {}
+        : Zmogus(other.vardas, other.pavarde),
+          paz(other.paz), egz(other.egz), rez(other.rez), gal(other.gal) {}
 
-    // 3. Kopijavimo priskyrimo operatorius
+    // 4. Kopijavimo priskyrimo operatorius
     studentas& operator=(const studentas& other) {
         if (this == &other) return *this;
         vardas  = other.vardas;
@@ -43,35 +68,45 @@ public:
         return *this;
     }
 
-    // 4. Perkėlimo konstruktorius
+    // 5. Perkėlimo konstruktorius
     studentas(studentas&& other) noexcept
-        : vardas(std::move(other.vardas)), pavarde(std::move(other.pavarde)),
+        : Zmogus(std::move(other.vardas), std::move(other.pavarde)),
           paz(std::move(other.paz)), egz(other.egz), rez(other.rez), gal(other.gal) {
+        other.vardas = ""; other.pavarde = "";
         other.egz = 0; other.rez = 0.0; other.gal = 0.0;
     }
 
-    // 5. Perkėlimo priskyrimo operatorius
+    // 6. Perkėlimo priskyrimo operatorius
     studentas& operator=(studentas&& other) noexcept {
         if (this == &other) return *this;
         vardas  = std::move(other.vardas);
         pavarde = std::move(other.pavarde);
         paz     = std::move(other.paz);
-        egz     = other.egz;  rez = other.rez;  gal = other.gal;
+        egz     = other.egz; rez = other.rez; gal = other.gal;
+        other.vardas = ""; other.pavarde = "";
         other.egz = 0; other.rez = 0.0; other.gal = 0.0;
         return *this;
     }
 
+    // --- Grynai virtualių metodų realizacija ---
+    std::string getVardas()  const override { return vardas; }
+    std::string getPavarde() const override { return pavarde; }
+    void setVardas(const std::string& v) override { vardas = v; }
+    void setPavarde(const std::string& p) override { pavarde = p; }
+
+    void print(std::ostream& out) const override {
+        out << std::left << std::setw(15) << vardas
+            << '\t' << std::setw(15) << pavarde
+            << '\t' << std::fixed << std::setprecision(2) << gal;
+    }
+
     // Getteriai
-    std::string getVardas()   const { return vardas; }
-    std::string getPavarde()  const { return pavarde; }
     std::vector<int> getPaz() const { return paz; }
     int    getEgz() const { return egz; }
     double getRez() const { return rez; }
     double getGal() const { return gal; }
 
     // Setteriai
-    void setVardas(const std::string& v)   { vardas = v; }
-    void setPavarde(const std::string& p)  { pavarde = p; }
     void setPaz(const std::vector<int>& p) { paz = p; }
     void addPaz(int p)                     { paz.push_back(p); }
     void clearPaz()                        { paz.clear(); }
@@ -79,11 +114,9 @@ public:
     void setRez(double r)                  { rez = r; }
     void setGal(double g)                  { gal = g; }
 
-    // Išvesties operatorius
+    // Išvesties operatorius (perdengia bazinį << per friend)
     friend std::ostream& operator<<(std::ostream& out, const studentas& s) {
-        out << std::left << std::setw(15) << s.vardas
-            << '\t' << std::setw(15) << s.pavarde
-            << '\t' << std::fixed << std::setprecision(2) << s.gal;
+        s.print(out);
         return out;
     }
 

@@ -71,6 +71,7 @@ public:
     studentas(studentas&& other) noexcept
         : Zmogus(std::move(other.vardas), std::move(other.pavarde)),
           paz(std::move(other.paz)), egz(other.egz), rez(other.rez), gal(other.gal) {
+        other.vardas = ""; other.pavarde = "";
         other.egz = 0; other.rez = 0.0; other.gal = 0.0;
     }
 
@@ -81,6 +82,7 @@ public:
         pavarde = std::move(other.pavarde);
         paz     = std::move(other.paz);
         egz     = other.egz; rez = other.rez; gal = other.gal;
+        other.vardas = ""; other.pavarde = "";
         other.egz = 0; other.rez = 0.0; other.gal = 0.0;
         return *this;
     }
@@ -146,6 +148,7 @@ public:
     }
 };
 
+// Pagalbinės funkcijos
 std::string randomstr();
 bool pagalVard(const studentas& a, const studentas& b);
 bool pagalPavard(const studentas& a, const studentas& b);
