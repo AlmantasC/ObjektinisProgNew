@@ -171,6 +171,63 @@ Rezultatai rodo, kad class visais atvejais veikė greičiau nei struct. Didinant
 
 ---
 
+## Vienetų testai
+
+Projektui taip pat pridėti vienetų testai (`test.cpp`), kurie tikrina pagrindinį `studentas` klasės funkcionalumą ir Rule of Five realizaciją. Testai atliekami naudojant standartinę C++ `assert` biblioteką.
+
+Testuojamos šios dalys:
+
+* Destruktorius.
+* Numatytasis ir parametrinis konstruktoriai.
+* Kopijavimo konstruktorius.
+* Kopijavimo priskyrimo operatorius.
+* Perkėlimo konstruktorius.
+* Perkėlimo priskyrimo operatorius.
+* Įvesties (`operator>>`) ir išvesties (`operator<<`) operatoriai.
+* `vid()` ir `med()` funkcijos.
+* Objektų nepriklausomumas po kopijavimo.
+* Korektiška būsena po perkėlimo (`move semantics`).
+
+### Testų paleidimas
+
+Sukompiliavus projektą galima paleisti testus:
+
+```bash
+./test
+```
+
+Sėkmingai praėjus testams išvedama:
+
+```text
+[OK] Destruktorius
+[OK] Numatytasis konstruktorius
+[OK] Parametrinis konstruktorius
+[OK] Kopijavimo konstruktorius
+[OK] Kopijavimo priskyrimo operatorius
+[OK] Perkėlimo konstruktorius
+[OK] Perkėlimo priskyrimo operatorius
+[OK] Išvesties operatorius <<
+[OK] Įvesties operatorius >>
+[OK] >> / << round-trip
+[OK] vid()
+[OK] med() nelyginis
+[OK] med() lyginis
+
+Visi testai praejo.
+```
+
+### Testų paskirtis
+
+Testai skirti užtikrinti, kad:
+
+* Rule of Five metodai veikia korektiškai.
+* Objektų kopijavimas nesukelia bendrų duomenų problemų.
+* Perkėlus objektą jo būsena išlieka validi.
+* Įvesties/išvesties operatoriai teisingai apdoroja duomenis.
+* Vidurkio ir medianos skaičiavimai grąžina teisingus rezultatus.
+
+---
+
 ## Spartos tyrimas
 
 Tyrimui naudojami prieš tai sugeneruoti failai. Bandyti visi rūšiavimo ir galutinio skaičiavimo būdai, rezultatai išreikšti vidurkiu.
@@ -267,3 +324,4 @@ Nuskaitymo ir rūšiavimo rezultatai išlieka panašūs visose trijose strategij
 | v0.4 | Pridėtas failų generavimas, studentų skirstymas į „nevykelius" ir „nerdus", programos spartos tyrimas su 5 skirtingo dydžio failais. |
 | v1.0 | Trys atskiros realizacijos (`vector`, `list`, `deque`). Išbandytos 3 skirstymo strategijos. Pridėtas `CMakeLists.txt`. |
 | v1.2 | `struct studentas` pertvarkyta į `class studentas` su `private` laukais, getteriais ir setteriais. Realizuoti visi Rule of Five metodai (destruktorius, kopijavimo ir perkėlimo konstruktoriai, kopijavimo ir perkėlimo priskyrimo operatoriai). Perdengiami `operator<<` ir `operator>>` įvesties/išvesties operatoriai. Pridėti vienetų testai (`test.cpp`). |
+| v1.5 | Pridėta abstrakti klasė `Zmogus`, iš kurios išvedama klasė `Studentas`
