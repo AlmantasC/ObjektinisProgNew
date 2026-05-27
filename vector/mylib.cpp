@@ -75,7 +75,13 @@ std::string getFile() {
     }
 }
 
-
+void printRez(std::ostream& out, std::vector<studentas>& A, int skaiciavimas) {
+    out<<std::fixed<<std::setprecision(2)<<std::left<<std::setw(15)<<"Vardas"<<std::setw(15)<<" Pavardė"<<"\tGalutinis ";
+    out<<(skaiciavimas == 1 ? "(Vid.)" : "(Med.)");
+    out<<"\n------------------------------------------------\n";
+    for (const auto& s : A)
+        out << s << '\n';
+}
 
 void ivestiRanka(std::vector<studentas>& A, int& m) {
     studentas temp;
